@@ -1,0 +1,267 @@
+:root{
+	--body-background-color: #f5f6f7;
+	--font-color: #4e4e4e;
+	--border-gray-color : #dadada;
+	--azabell-color: #d783ff;
+	--azabell-join-color : #a9a9a9;
+	--azabell-join-border-color :  #d783ff;
+	--azabell-border-color: #d783ff;
+}
+*{
+	margin:1px;
+	padding:1px;
+}
+
+input[type="checkbox"] {
+  width: 20px; 
+  height: 20px; 
+}
+
+JoinCSS{
+	font-size: 14px;
+	padding : 10px;
+	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+body{
+	background:var(--body-background-color);
+}
+
+.main-container{
+	width:100%;
+	margin : 20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 21px;
+}
+.main-container .main-wrap{
+	width:768px;
+
+}
+.main-container .main-wrap .sel-lang-wrap .lang-select
+{
+	width: 96px;
+	height: 30px;
+	color: var(--font-color);
+	border: solid 1px var(--border-gray-color);
+}
+.main-container .main-wrap .logo-wrap{
+	padding-top:55px;
+}
+.main-container .main-wrap .logo-wrap img
+{
+	width: 231px;
+	height: 44px;
+}
+
+.main-container .main-wrap header .sel-lang-wrap{
+	display:flex;
+	justify-content:flex-end;
+}
+
+.main-container .main-wrap header .logo-wrap{
+	display:flex;	
+	flex-direction: column;
+	align-items: center;
+}
+.login-input-section-wrap{
+	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+.login-input-wrap{
+	border-radius: 40px;
+	width: 465px;
+	height :48px;
+	border: solid 1px var(	--border-gray-color );
+	background: white;
+}
+.password-wrap{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.login-input-wrap input{
+	border: none;
+	width:430px;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 10px;
+	height:30px;
+}
+.login-button-wrap {
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.login-button-wrap button{
+	border-radius: 40px;
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--azabell-color);
+	color: white;
+	border: solid 1px var(--azabell-border-color);
+}
+.join-button-wrap button{
+	border-radius: 40px;
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--azabell-join-color);
+	color: white;
+	border: solid 1px var(--azabell-border-color);
+}
+
+
+
+.login-stay-sign-in{
+	margin : 4px;
+	width: 465px;
+	height: 20px;
+	display: flex;
+	color: #4e4e4e;
+	align-items: center;
+	justify-content: center;
+}
+.login-stay-sign-in i{
+	font-size: 20px;
+	color: #9ba1a3;
+}
+.login-stay-sign-in span{
+	padding-left: 10px;
+	line-height: 10px;
+}
+
+.Easy-sgin-in-wrap{
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+
+}
+.Easy-sgin-in-wrap h2{
+	font-size: 20px;
+}
+.Easy-sgin-in-wrap .sign-button-list
+{
+	padding-top:25px;
+	list-style: none;
+	width: 465px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Easy-sgin-in-wrap .sign-button-list li{
+	padding-bottom: 10px;
+}
+.Easy-sgin-in-wrap .sign-button-list li button{
+	width: 465px;
+	height: 56px;
+	border: solid 1px var(--border-gray-color);
+	text-align: left;
+	background: white;
+}
+.Easy-sgin-in-wrap .sign-button-list li button i{
+	padding-left: 15px;
+	font-size: 20px;
+}
+.fa-qrcode
+{
+	color:var(--naver-green-color);
+}
+.fa-line{
+	color:var(--naver-green-color);
+}
+.fa-facebook-square
+{
+	color:#4064ac;
+}
+.Easy-sgin-in-wrap .sign-button-list li button span{
+	padding-left: 20px;
+	font-size: 18px;
+}
+.Easy-sgin-in-wrap .forget-msg{
+	color:var(--font-color);
+	font-size: 14px;
+	padding-top: 20px;
+
+}
+footer{
+	padding-top: 95px;
+	padding-bottom: 20px;
+	display: center;
+	flex-direction:column;
+	align-items: center;
+	width:768px;
+}
+
+.copyright-wrap{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 15px;
+}
+
+footer .copyright-wrap span img{
+	width: 59px;
+	height: 11px;
+}
+
+footer .copyright-wrap span{
+	font-size: 13px;
+	line-height: 15px;
+};
+
+
+.box-radio-input input[type="radio"]{
+  display:none;
+}
+
+.box-radio-input input[type="radio"] + span{
+  display:inline-block;
+  background:none;
+  border:1px solid #dfdfdf;  
+  padding:0px 10px;
+  text-align:center;
+  height:35px;
+  line-height:33px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+  border:1px solid #23a3a7;
+  background:#23a3a7;
+  color:#fff;
+}
+ 
+.test_obj input[type="radio"] {
+   display: none;
+}
+ 
+.test_obj input[type="radio"] + span {
+   display: inline-block;
+   padding: 15px 10px;
+   border: 1px solid #dfdfdf;
+   background-color: #ffffff;
+   text-align: center;
+   cursor: pointer;
+}
+ 
+.test_obj input[type="radio"]:checked + span {
+   background-color: #113a6b;
+   color: #ffffff;
+}
+ 
+ 
