@@ -22,26 +22,80 @@
         <section class="about">
             <h2>About Me</h2>
             <p>안녕하세요! 저는 C++ 개발자입니다. 고성능 애플리케이션과 시스템 프로그래밍에 관심이 많습니다.</p>
+            <p>Hello! I am a C++ developer with a passion for high-performance applications and system programming.</p>
         </section>
 
         <section class="projects">
             <h2>Projects</h2>
             <ul>
-                <li><a href="#">Project 1: High-Performance Computing</a></li>
-                <li><a href="#">Project 2: Game Engine Development</a></li>
-                <li><a href="#">Project 3: Embedded Systems</a></li>
+                <li>
+                    <h3><a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank">QT Kernel OS</a></h3>
+                    <p>
+                        <strong>한글:</strong> QT 프레임워크를 사용하여 커널 수준의 운영체제를 시뮬레이션하는 프로젝트입니다. 시스템 리소스 관리 및 프로세스 스케줄링을 구현했습니다.<br>
+                        <strong>English:</strong> A project simulating a kernel-level operating system using the QT framework. Implemented system resource management and process scheduling.
+                    </p>
+                </li>
+                <li>
+                    <h3><a href="https://github.com/Azabell1993/ClangStructPointerExample" target="_blank">Clang Struct Pointer Example</a></h3>
+                    <p>
+                        <strong>한글:</strong> Clang 컴파일러를 사용하여 구조체와 포인터의 메모리 레이아웃을 분석하는 예제 프로젝트입니다.<br>
+                        <strong>English:</strong> An example project analyzing the memory layout of structures and pointers using the Clang compiler.
+                    </p>
+                </li>
+                <li>
+                    <h3><a href="https://github.com/Azabell1993/c_smartpointer" target="_blank>C++ Smart Pointer</a></h3>
+                    <p>
+                        <strong>한글:</strong> C++ 스마트 포인터(unique_ptr, shared_ptr, weak_ptr)를 직접 구현하여 메모리 관리의 원리를 이해하는 프로젝트입니다.<br>
+                        <strong>English:</strong> A project implementing C++ smart pointers (unique_ptr, shared_ptr, weak_ptr) to understand the principles of memory management.
+                    </p>
+                </li>
             </ul>
         </section>
 
         <section class="contact">
             <h2>Contact</h2>
-            <p>Email: azabell1993@example.com</p>
-            <p>GitHub: <a href="https://github.com/Azabell1993">Azabell1993</a></p>
+            <p>Email: azabell1993@gmail.com</p>
+            <p>GitHub: <a href="https://github.com/Azabell1993" target="_blank">Azabell1993</a></p>
+        </section>
+
+        <section class="comments">
+            <h2>Leave a Comment</h2>
+            <form id="comment-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="comment-list">
+                <!-- 댓글이 여기에 추가됩니다 -->
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Azabell1993. All rights reserved.</p>
     </footer>
+
+    <script>
+        // 댓글 기능 구현
+        document.getElementById('comment-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            if (name && comment) {
+                const commentList = document.getElementById('comment-list');
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+                newComment.innerHTML = `<strong>${name}:</strong> ${comment}`;
+                commentList.appendChild(newComment);
+
+                // 폼 초기화
+                document.getElementById('name').value = '';
+                document.getElementById('comment').value = '';
+            }
+        });
+    </script>
 </body>
 </html>
