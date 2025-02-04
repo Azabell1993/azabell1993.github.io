@@ -3,62 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SW Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Wedding Invitation API | Dev Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #333;
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .api-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .api-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .api-header h1 {
+            font-size: 2.5em;
+            color: #202124;
+            margin: 0;
+        }
+        .api-header p {
+            font-size: 1.2em;
+            color: #5f6368;
+            margin: 10px 0 0;
+        }
+        .api-section {
+            margin-bottom: 40px;
+        }
+        .api-section h2 {
+            font-size: 1.8em;
+            color: #202124;
+            margin-bottom: 15px;
+        }
+        .api-section p {
+            font-size: 1em;
+            color: #5f6368;
+            margin: 0;
+        }
+        .api-section pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            color: #202124;
+            margin: 15px 0;
+        }
+        .api-section code {
+            font-family: 'Roboto Mono', monospace;
+            color: #d6336c;
+        }
+        .api-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #1a73e8;
+            color: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        .api-button:hover {
+            background: #1557b7;
+        }
+        .api-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #5f6368;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-    <div class="matrix-overlay"></div>
-
-    <header>
-        <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50">
-                <circle cx="50" cy="50" r="45" fill="#0f0" />
-                <text x="50%" y="50%" text-anchor="middle" fill="#000" font-size="40" font-family="Courier New, monospace" dy=".3em">C++</text>
-            </svg>
+    <div class="api-container">
+        <!-- API Header -->
+        <div class="api-header">
+            <h1>결혼식 초대 API</h1>
+            <p>버전 1.0.0 | 최종 업데이트: 2025-02-04</p>
         </div>
-        <h1>>_ Azabell1993</h1>
-        <p>SW C++ Developer</p>
-    </header>
 
-    <main>
-        <section class="terminal">
-            <h2>:: whoami</h2>
-            <p>안녕하세요! 저는 시스템 프로그래밍 및 보안 분야에 관심이 많은 C++ 개발자입니다.</p>
-            <p>Hello! I am a C++ developer passionate about system programming and cybersecurity.</p>
-        </section>
+        <!-- API Section: Introduction -->
+        <div class="api-section">
+            <h2>소개</h2>
+            <p>
+                개발자를 위한 공식 결혼식 초대 API입니다! 본 API를 통해 Azabell1993의 결혼식에 참석하기 위한 정보를 확인하고 RSVP 요청을 보낼 수 있습니다.
+            </p>
+        </div>
 
-        <section class="projects">
-            <h2>:: cat projects.log</h2>
-            <ul>
-                <li>
-                    <h3><a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank">QT Kernel OS</a></h3>
-                    <p>커널 수준의 운영체제 시뮬레이션 프로젝트.</p>
-                </li>
-                <li>
-                    <h3><a href="https://github.com/Azabell1993/ClangStructPointerExample" target="_blank">Clang Struct Pointer Example</a></h3>
-                    <p>구조체와 포인터의 메모리 레이아웃 분석 프로젝트.</p>
-                </li>
-                <li>
-                    <h3><a href="https://github.com/Azabell1993/c_smartpointer" target="_blank">C++ Smart Pointer</a></h3>
-                    <p>스마트 포인터 구현 및 메모리 관리 최적화 프로젝트.</p>
-                </li>
-            </ul>
-        </section>
+        <!-- API Section: Endpoint -->
+        <div class="api-section">
+            <h2>엔드포인트</h2>
+            <p>
+                초대 요청을 수락하려면 다음 엔드포인트로 요청을 보내세요.
+            </p>
+            <pre>
+POST /api/v1/wedding/rsvp
+{
+    "name": "박지우",
+    "accept or not": "accept",
+    "email" : "example@example.com"
+    "message": "감사합니다! 참석할게요!"
+}
+            </pre>
+            <!-- <p>
+                <a href="https://github.com/Azabell1993/azabell1993.github.io/issues/new?title=[RSVP]%20박지우님%20참석%20확인&body=이름:%20박지우%0A이메일:%20example@example.com%0A참석여부:%20참석%0A메시지:%20감사합니다!%20참석할게요!" class="api-button" target="_blank">
+                    초대 수락하기
+                </a>
+            </p> -->
+            <p>
+                <a href="https://github.com/Azabell1993/azabell1993.github.io/issues/new?template=rsvp.yaml" class="api-button" target="_blank">
+                    초대 수락하기
+                </a>
+            </p>
+        </div>
 
-        <section class="comments">
-            <h2>:: tail -f /var/log/comments</h2>
-            <script src="https://utteranc.es/client.js"
-                repo="Azabell1993/azabell1993.github.io"
-                issue-term="pathname"
-                theme="github-dark"
-                crossorigin="anonymous"
-                async>
-            </script>
-        </section>
-    </main>
+        <!-- API Section: Response -->
+        <div class="api-section">
+            <h2>응답</h2>
+            <p>
+                RSVP가 성공적으로 완료되면 다음과 같은 응답을 받습니다.
+            </p>
+            <pre>
+{
+    "status": "success",
+    "message": "초대에 응해주셔서 감사합니다!",
+    "data": {
+        "event_date": "2025-05-24 17:30 KST",
+        "event_location": "서울 성북구 성북로23길 9, 리보아르"
+    }
+}
+            </pre>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 Azabell1993 | Access Denied | Unauthorized Entry Prohibited</p>
-    </footer>
+        <!-- GitHub Comments Section -->
+        <div class="api-container">
+            <section class="comments">
+                <h2>:: 방명록</h2>
+                <script src="https://utteranc.es/client.js"
+                    repo="Azabell1993/azabell1993.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </section>
+        </div>
+
+        <!-- API Footer -->
+        <div class="api-footer">
+            &copy; 2025 Azabell1993. All rights reserved.
+        </div>
+    </div>
 </body>
 </html>
