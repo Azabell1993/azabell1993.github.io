@@ -1,0 +1,29 @@
+name: "RSVP 참석 확인"
+description: "결혼식 초대 RSVP를 제출하세요."
+title: "[RSVP] <이름> 참석 여부"
+labels: ["RSVP"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: "이름"
+      placeholder: "예: 박지우"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: response
+    attributes:
+      label: "참석 여부"
+      options:
+        - "참석"
+        - "불참"
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: "메시지"
+      description: "추가적으로 남기고 싶은 메시지를 입력하세요."
+      placeholder: "예: 축하드립니다!"
