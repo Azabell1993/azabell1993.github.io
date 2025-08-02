@@ -1010,95 +1010,18 @@ body {
         padding: 20px;
     }
     
-    .profile-section {
-        margin: 20px 0;
-    }
-    
-    .stats {
-        padding: 15px;
-    }
-    
-    .main-content {
-        padding: 20px;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .github-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .navigation {
-        display: flex;
+        flex-direction: row;
         justify-content: space-around;
         margin-top: 20px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .nav-item {
-        flex-direction: column;
-        padding: 10px;
-        margin: 0;
-        min-width: 60px;
     }
     
     .nav-item span {
-        font-size: 12px;
-        margin-top: 5px;
+        display: none;
     }
     
-    .nav-item i {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-    
-    /* 모바일에서 헤더와 카운트 */
-    .header-with-count {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
-    }
-    
-    .repo-count-badge {
-        align-self: flex-end;
-    }
-    
-    /* 모바일에서 페이징 */
-    .pagination {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .pagination-btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    /* 모바일에서 갤러리 카테고리 */
-    .gallery-categories {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 5px;
-    }
-    
-    .category-btn {
-        flex-shrink: 0;
-        min-width: 80px;
-    }
-    
-    /* 모바일에서 홈 섹션 */
-    .home-section {
-        padding: 20px;
-        margin-bottom: 30px;
-    }
-    
-    .section-header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
+    .posts-grid.compact {
+        grid-template-columns: 1fr;
     }
     
     .portfolio-preview {
@@ -1112,9 +1035,260 @@ body {
     .gallery-preview {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .posts-grid.compact {
-        grid-template-columns: 1fr;
-        /* 모바일에서도 max-height 제거 */
+}
+
+/* 푸터 스타일 */
+.site-footer {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    margin-top: 50px;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ecf0f1;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-links a:hover {
+    color: #3498db;
+}
+
+.tech-stack-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-badge {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.footer-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #bdc3c7;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-links a, .footer-links button {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-links a:hover, .footer-links button:hover {
+    color: #3498db;
+}
+
+#installPWA {
+    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* 검색 고급 기능 스타일 */
+.search-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-header h2 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.search-header p {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.search-controls {
+    margin-bottom: 30px;
+}
+
+.filter-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.filter-group select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.search-stats {
+    background: #e8f4fd;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #2980b9;
+    border-left: 4px solid #3498db;
+}
+
+.search-placeholder {
+    text-align: center;
+    padding: 60px 20px;
+    color: #7f8c8d;
+}
+
+.search-placeholder i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.search-placeholder h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* 로딩 애니메이션 개선 */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #7f8c8d;
+}
+
+.loading i {
+    font-size: 32px;
+    margin-bottom: 15px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 스크롤 애니메이션 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 호버 효과 개선 */
+.repo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) {
+    .portfolio-card:hover,
+    .repo-card:hover,
+    .gallery-item:hover {
+        transform: none;
+    }
+}
+
+/* PWA 스타일 */
+@media (display-mode: standalone) {
+    .main-container {
+        margin-top: 0;
+        border-radius: 0;
     }
 }

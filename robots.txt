@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://azabell1993.github.io/sitemap.xml

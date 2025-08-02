@@ -1,5 +1,8 @@
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function() {
+    // GitHub API 설정
+    const GITHUB_USERNAME = 'Azabell1993';
+    const GITHUB_API_BASE = 'https://api.github.com';
     // 정적 레포지토리 데이터 (fallback용)
     const fallbackRepoData = [
         {
@@ -961,4 +964,304 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     console.log('🚀 Azabell1993 Portfolio with GitHub Integration Loaded Successfully!');
+
+    // PWA 설치 기능
+    let deferredPrompt;
+    const installButton = document.getElementById('installPWA');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.style.display = 'block';
+    });
+
+    installButton.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`PWA install outcome: ${outcome}`);
+            deferredPrompt = null;
+            installButton.style.display = 'none';
+        }
+    });
+
+    // Service Worker 등록
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then((registration) => {
+                    console.log('SW registered: ', registration);
+                })
+                .catch((registrationError) => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+        });
+    }
+
+    // 고급 검색 기능
+    let allReposForSearch = [];
+    let filteredRepos = [];
+
+    async function initializeAdvancedSearch() {
+        // 모든 레포지토리 데이터 가져오기
+        if (allRepos.length > 0) {
+            allReposForSearch = allRepos;
+        } else {
+            allReposForSearch = fallbackRepoData;
+        }
+        
+        setupLanguageFilter();
+        setupSearchListeners();
+        updateSearchStats();
+    }
+
+    function setupLanguageFilter() {
+        const languageFilter = document.getElementById('languageFilter');
+        const languages = [...new Set(allReposForSearch.map(repo => repo.language).filter(Boolean))];
+        
+        languages.forEach(language => {
+            const option = document.createElement('option');
+            option.value = language;
+            option.textContent = language;
+            languageFilter.appendChild(option);
+        });
+    }
+
+    function setupSearchListeners() {
+        const searchInput = document.getElementById('githubSearch');
+        const languageFilter = document.getElementById('languageFilter');
+        const sortBy = document.getElementById('sortBy');
+        const orderBy = document.getElementById('orderBy');
+
+        // 실시간 검색
+        searchInput.addEventListener('input', debounce(performAdvancedSearch, 300));
+        languageFilter.addEventListener('change', performAdvancedSearch);
+        sortBy.addEventListener('change', performAdvancedSearch);
+        orderBy.addEventListener('change', performAdvancedSearch);
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function performAdvancedSearch() {
+        const query = document.getElementById('githubSearch').value.toLowerCase().trim();
+        const selectedLanguage = document.getElementById('languageFilter').value;
+        const sortBy = document.getElementById('sortBy').value;
+        const orderBy = document.getElementById('orderBy').value;
+
+        // 필터링
+        filteredRepos = allReposForSearch.filter(repo => {
+            const matchesQuery = !query || 
+                repo.name.toLowerCase().includes(query) ||
+                (repo.description && repo.description.toLowerCase().includes(query)) ||
+                (repo.language && repo.language.toLowerCase().includes(query));
+            
+            const matchesLanguage = !selectedLanguage || repo.language === selectedLanguage;
+            
+            return matchesQuery && matchesLanguage;
+        });
+
+        // 정렬
+        filteredRepos.sort((a, b) => {
+            let aValue, bValue;
+            
+            switch (sortBy) {
+                case 'name':
+                    aValue = a.name.toLowerCase();
+                    bValue = b.name.toLowerCase();
+                    break;
+                case 'created':
+                    aValue = new Date(a.created_at || a.updated_at);
+                    bValue = new Date(b.created_at || b.updated_at);
+                    break;
+                case 'stars':
+                    aValue = a.stargazers_count || 0;
+                    bValue = b.stargazers_count || 0;
+                    break;
+                case 'forks':
+                    aValue = a.forks_count || 0;
+                    bValue = b.forks_count || 0;
+                    break;
+                default: // updated
+                    aValue = new Date(a.updated_at);
+                    bValue = new Date(b.updated_at);
+            }
+
+            if (typeof aValue === 'string') {
+                return orderBy === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            } else {
+                return orderBy === 'asc' ? aValue - bValue : bValue - aValue;
+            }
+        });
+
+        displaySearchResults();
+        updateSearchStats();
+    }
+
+    function displaySearchResults() {
+        const resultsContainer = document.getElementById('searchResults');
+        
+        if (filteredRepos.length === 0) {
+            resultsContainer.innerHTML = `
+                <div class="search-placeholder">
+                    <i class="fas fa-search"></i>
+                    <h3>검색 결과 없음</h3>
+                    <p>검색어나 필터 조건을 변경해보세요.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const languageColors = {
+            'JavaScript': '#f1e05a',
+            'TypeScript': '#2b7489',
+            'Python': '#3572A5',
+            'Java': '#b07219',
+            'C': '#555555',
+            'C++': '#f34b7d',
+            'HTML': '#e34c26',
+            'CSS': '#563d7c',
+            'Shell': '#89e051',
+            'Go': '#00ADD8',
+            'Rust': '#dea584',
+            'PHP': '#4F5D95',
+            'Swift': '#ffac45',
+            'Kotlin': '#A97BFF',
+            'Dart': '#00B4AB'
+        };
+
+        resultsContainer.innerHTML = filteredRepos.map(repo => `
+            <div class="repo-card fade-in" style="margin-bottom: 20px;">
+                <div class="repo-header">
+                    <div>
+                        <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
+                        <span class="repo-visibility">${repo.private ? 'Private' : 'Public'}</span>
+                    </div>
+                </div>
+                ${repo.description ? `<p class="repo-description">${repo.description}</p>` : ''}
+                <div class="repo-stats">
+                    ${repo.language ? `
+                        <div class="repo-stat">
+                            <span class="language-color" style="background-color: ${languageColors[repo.language] || '#8e8e8e'}"></span>
+                            ${repo.language}
+                        </div>
+                    ` : ''}
+                    <div class="repo-stat">
+                        <i class="fas fa-star"></i>
+                        ${repo.stargazers_count || 0}
+                    </div>
+                    <div class="repo-stat">
+                        <i class="fas fa-code-branch"></i>
+                        ${repo.forks_count || 0}
+                    </div>
+                </div>
+                <div class="repo-updated">Updated ${getTimeAgo(new Date(repo.updated_at))}</div>
+            </div>
+        `).join('');
+
+        // 애니메이션 트리거
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 50);
+    }
+
+    function updateSearchStats() {
+        const statsElement = document.getElementById('searchStats');
+        const resultsCount = document.getElementById('resultsCount');
+        const totalCount = document.getElementById('totalCount');
+        
+        resultsCount.textContent = filteredRepos.length;
+        totalCount.textContent = allReposForSearch.length;
+        statsElement.style.display = 'block';
+    }
+
+    // 맨 위로 스크롤 기능
+    document.getElementById('backToTop').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 스크롤 애니메이션
+    const observeElements = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    };
+
+    // 푸터 통계 업데이트
+    function updateFooterStats() {
+        document.getElementById('footerRepoCount').textContent = allRepos.length || fallbackRepoData.length;
+        
+        // 커밋 수는 실제 API에서는 복잡하므로 추정값 사용
+        const estimatedCommits = (allRepos.length || fallbackRepoData.length) * 15; // 레포당 평균 15개 커밋 추정
+        document.getElementById('footerCommitCount').textContent = estimatedCommits + '+';
+    }
+
+    // 검색 탭이 활성화될 때 고급 검색 초기화
+    const originalTabClickHandler = navItems.forEach;
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const tabId = item.getAttribute('data-tab');
+            if (tabId === 'search' && allReposForSearch.length === 0) {
+                setTimeout(initializeAdvancedSearch, 100);
+            }
+        });
+    });
+
+    // 초기화 완료 후 실행
+    setTimeout(() => {
+        updateFooterStats();
+        observeElements();
+    }, 1000);
+
+    // 키보드 단축키 지원
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey) {
+            switch (e.key) {
+                case 'k':
+                    e.preventDefault();
+                    document.getElementById('githubSearch').focus();
+                    break;
+                case '1':
+                    e.preventDefault();
+                    document.querySelector('[data-tab="home"]').click();
+                    break;
+                case '2':
+                    e.preventDefault();
+                    document.querySelector('[data-tab="search"]').click();
+                    break;
+                case '3':
+                    e.preventDefault();
+                    document.querySelector('[data-tab="portfolio"]').click();
+                    break;
+                case '4':
+                    e.preventDefault();
+                    document.querySelector('[data-tab="github"]').click();
+                    break;
+                case '5':
+                    e.preventDefault();
+                    document.querySelector('[data-tab="gallery"]').click();
+                    break;
+            }
+        }
+    });
 });

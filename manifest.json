@@ -1,0 +1,26 @@
+{
+  "name": "Azabell1993 Portfolio",
+  "short_name": "Azabell1993",
+  "description": "Cross-Platform Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#4A90E2",
+  "theme_color": "#4A90E2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/4A90E2/FFFFFF?text=A",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/4A90E2/FFFFFF?text=A",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "ko"
+}
