@@ -5,31 +5,301 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azabell1993 - Cross-Platform Developer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="toggle-theme">
-        <button id="themeToggle">🌓</button>
-    </div>
-    <div class="container">
-        <h1 class="fade-in">Azabell1993</h1>
-        <p class="fade-in">Cross-Platform Developer</p>
-        <p class="fade-in tech">C/C++ · Java · JavaScript</p>
+    <div class="main-container">
+        <!-- 왼쪽 사이드바 -->
+        <div class="sidebar">
+            <div class="toggle-theme">
+                <button id="themeToggle">🌓</button>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="https://via.placeholder.com/150/4A90E2/FFFFFF?text=A" alt="Profile" id="profileImg">
+                </div>
+                <h1 class="username">azabell1993</h1>
+                <p class="bio">Cross-Platform Developer</p>
+                <p class="tech-stack">C/C++ · Java · JavaScript</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="count" id="repoCount">-</span>
+                        <span class="label">Repositories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="count" id="followerCount">-</span>
+                        <span class="label">Followers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="count" id="followingCount">-</span>
+                        <span class="label">Following</span>
+                    </div>
+                </div>
 
-        <div class="projects">
-            <div class="card fade-in">
-                <h2>ImSQL</h2>
-                <p>SQL 자동화 및 라이선스 통합 엔진<br>(C++ · ECDSA · AES-256 · Crow)</p>
-                <a href="https://github.com/Azabell1993/ImSQL" target="_blank">🔗 GitHub</a>
+                <!-- 네비게이션 메뉴 (자기소개 바로 아래로 이동) -->
+                <nav class="navigation">
+                    <div class="nav-item active" data-tab="home">
+                        <i class="fas fa-home"></i>
+                        <span>홈</span>
+                    </div>
+                    <div class="nav-item" data-tab="search">
+                        <i class="fas fa-search"></i>
+                        <span>검색</span>
+                    </div>
+                    <div class="nav-item" data-tab="portfolio">
+                        <i class="fas fa-briefcase"></i>
+                        <span>포트폴리오</span>
+                    </div>
+                    <div class="nav-item" data-tab="github">
+                        <i class="fab fa-github"></i>
+                        <span>깃허브 레포</span>
+                    </div>
+                    <div class="nav-item" data-tab="gallery">
+                        <i class="fas fa-images"></i>
+                        <span>갤러리</span>
+                    </div>
+                </nav>
             </div>
-            <div class="card fade-in">
-                <h2>SmartPtr API</h2>
-                <p>C 기반 스마트 포인터 API 서버<br></p>
-                <a href="https://github.com/Azabell1993/c_smartpointer" target="_blank">🔗 GitHub</a>
+        </div>
+
+        <!-- 오른쪽 메인 콘텐츠 -->
+        <div class="main-content">
+            <!-- 홈 탭 -->
+            <div class="tab-content active" id="home">
+                <div class="content-header">
+                    <h2>Welcome to My Portfolio</h2>
+                </div>
+                
+                <!-- 최근 활동 섹션 -->
+                <div class="home-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-clock"></i> 최근 활동</h3>
+                        <a href="#" class="view-more" data-tab="home-commits">더보기</a>
+                    </div>
+                    <div class="posts-grid compact" id="homePostsContainer">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>최근 활동을 불러오는 중...</p>
+                        </div>
+                    </div>
+                    <!-- 최근 활동 페이징 -->
+                    <div class="pagination compact" id="homePagination" style="display: none;">
+                        <button class="pagination-btn small" id="homePrevBtn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="page-info small">
+                            <span id="homeCurrentPage">1</span>/<span id="homeTotalPages">1</span>
+                        </div>
+                        <button class="pagination-btn small" id="homeNextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 포트폴리오 섹션 -->
+                <div class="home-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-briefcase"></i> 주요 포트폴리오</h3>
+                        <a href="#" class="view-more" data-tab="portfolio">더보기</a>
+                    </div>
+                    <div class="portfolio-preview">
+                        <div class="portfolio-card compact animate-card">
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=300&h=200&fit=crop&crop=center" alt="Database SQL" />
+                            </div>
+                            <h4>ImSQL</h4>
+                            <p>SQL 자동화 및 라이선스 통합 엔진</p>
+                            <div class="tech-tags">
+                                <span>C++</span>
+                                <span>ECDSA</span>
+                                <span>AES-256</span>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-card compact animate-card">
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=300&h=200&fit=crop&crop=center" alt="Memory Management" />
+                            </div>
+                            <h4>SmartPtr API</h4>
+                            <p>C 기반 스마트 포인터 API 서버</p>
+                            <div class="tech-tags">
+                                <span>C</span>
+                                <span>API</span>
+                                <span>Memory</span>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-card compact animate-card">
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=300&h=200&fit=crop&crop=center" alt="Operating System" />
+                            </div>
+                            <h4>QT_Kernel_OS</h4>
+                            <p>QT Creator로 만든 커널 OS 샘플</p>
+                            <div class="tech-tags">
+                                <span>C++</span>
+                                <span>QT</span>
+                                <span>OS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub 레포 섹션 -->
+                <div class="home-section">
+                    <div class="section-header">
+                        <h3><i class="fab fa-github"></i> GitHub 레포지토리 (5개)</h3>
+                        <a href="#" class="view-more" data-tab="github">더보기</a>
+                    </div>
+                    <div class="github-preview" id="homeGithubContainer">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>GitHub 레포지토리를 불러오는 중...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 갤러리 섹션 -->
+                <div class="home-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-images"></i> 아트워크 갤러리 (5개)</h3>
+                        <a href="#" class="view-more" data-tab="gallery">더보기</a>
+                    </div>
+                    <div class="gallery-preview" id="homeGalleryContainer">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>갤러리를 불러오는 중...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card fade-in">
-                <h2>QT_Kernel_OS</h2>
-                <p>QT Creator로 만든 커널 OS 샘플<br>(C++ · QT Framework)</p>
-                <a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank">🔗 GitHub</a>
+
+            <!-- 검색 탭 -->
+            <div class="tab-content" id="search">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="GitHub 레포지토리 검색..." id="githubSearch">
+                        <button id="searchGithub">검색</button>
+                    </div>
+                    <div class="search-results" id="searchResults">
+                        <p>GitHub에서 검색할 키워드를 입력하세요.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 포트폴리오 탭 -->
+            <div class="tab-content" id="portfolio">
+                <div class="content-header">
+                    <h2>개발 포트폴리오</h2>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card animate-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=250&fit=crop&crop=center" alt="Database SQL" />
+                        </div>
+                        <h3>ImSQL</h3>
+                        <p>SQL 자동화 및 라이선스 통합 엔진</p>
+                        <div class="tech-tags">
+                            <span>C++</span>
+                            <span>ECDSA</span>
+                            <span>AES-256</span>
+                        </div>
+                        <a href="https://github.com/Azabell1993/ImSQL" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    
+                    <div class="portfolio-card animate-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop&crop=center" alt="Memory Management" />
+                        </div>
+                        <h3>SmartPtr API</h3>
+                        <p>C 기반 스마트 포인터 API 서버</p>
+                        <div class="tech-tags">
+                            <span>C</span>
+                            <span>API</span>
+                            <span>Memory</span>
+                        </div>
+                        <a href="https://github.com/Azabell1993/c_smartpointer" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    
+                    <div class="portfolio-card animate-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=250&fit=crop&crop=center" alt="Operating System" />
+                        </div>
+                        <h3>QT_Kernel_OS</h3>
+                        <p>QT Creator로 만든 커널 OS 샘플</p>
+                        <div class="tech-tags">
+                            <span>C++</span>
+                            <span>QT</span>
+                            <span>OS</span>
+                        </div>
+                        <a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub 레포 탭 -->
+            <div class="tab-content" id="github">
+                <div class="content-header">
+                    <div class="header-with-count">
+                        <div>
+                            <h2>GitHub 레포지토리</h2>
+                            <p>Azabell1993의 모든 공개 레포지토리</p>
+                        </div>
+                        <div class="repo-count-badge" id="repoCountBadge">
+                            <span id="totalRepoCount">-</span>개
+                        </div>
+                    </div>
+                </div>
+                <div class="github-grid" id="githubRepos">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>GitHub 레포지토리를 불러오는 중...</p>
+                    </div>
+                </div>
+                
+                <!-- 페이징 -->
+                <div class="pagination" id="pagination" style="display: none;">
+                    <button class="pagination-btn" id="prevBtn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        이전
+                    </button>
+                    <div class="page-info">
+                        <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                    </div>
+                    <button class="pagination-btn" id="nextBtn">
+                        다음
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 갤러리 탭 -->
+            <div class="tab-content" id="gallery">
+                <div class="content-header">
+                    <h2>아트워크 갤러리</h2>
+                    <p>드로잉과 일러스트 작품들</p>
+                </div>
+                <div class="gallery-categories">
+                    <button class="category-btn active" data-category="all">전체</button>
+                    <button class="category-btn" data-category="anatomy">해부학</button>
+                    <button class="category-btn" data-category="comic">코믹</button>
+                    <button class="category-btn" data-category="person">인물화</button>
+                    <button class="category-btn" data-category="cad">CAD</button>
+                </div>
+                <div class="gallery-grid" id="galleryContainer">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>갤러리 이미지를 불러오는 중...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
