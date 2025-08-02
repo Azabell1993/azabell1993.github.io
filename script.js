@@ -337,10 +337,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 { file: '소녀3.jpg', title: '소녀 드로잉 #3' },
                 { file: '유튜버 주깡깡.jpg', title: '유튜버 주깡깡 팬아트' },
                 { file: '인물화.jpg', title: '인물화 연습' },
-                { file: '인물화2.png', title: '인물화 스터디' }
+                { file: '인물화2.jpg', title: '인물화 스터디' }
             ],
             cad: [
-                { file: 'AutoCAD.png', title: 'AutoCAD 도면 작업' }
+                { file: 'AutoCAD.jpg', title: 'AutoCAD 도면 작업' }
             ]
         };
         
@@ -828,10 +828,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     { file: '소녀3.jpg', title: '소녀 일러스트 #3' },
                     { file: '유튜버 주깡깡.jpg', title: '유튜버 주깡깡 팬아트' },
                     { file: '인물화.jpg', title: '인물화 연습' },
-                    { file: '인물화2.png', title: '인물화 연습' }
+                    { file: '인물화2.jpg', title: '인물화 연습' }
                 ],
                 cad: [
-                    { file: 'AutoCAD.png', title: 'AutoCAD 기술도면' }
+                    { file: 'AutoCAD.jpg', title: 'AutoCAD 기술도면' }
                 ]
             };
             
