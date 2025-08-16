@@ -705,28 +705,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            // 모든 nav-item에서 active 클래스 제거
             navItems.forEach(nav => nav.classList.remove('active'));
-            // 클릭된 nav-item에 active 클래스 추가
             item.classList.add('active');
-
-            // 모든 탭 콘텐츠 숨기기
             tabContents.forEach(content => content.classList.remove('active'));
-            
-            // 해당 탭 콘텐츠 보이기
             const tabId = item.getAttribute('data-tab');
             const targetTab = document.getElementById(tabId);
             if (targetTab) {
                 targetTab.classList.add('active');
-                
-                // GitHub 탭이 선택되면 레포지토리 로드
                 if (tabId === 'github') {
                     loadGitHubRepos();
-                }
-                // 갤러리 탭이 선택되면 갤러리 로드
-                else if (tabId === 'gallery') {
-                    if (galleryImages.length === 0) {
-                        loadGalleryImages();
+                } else if (tabId === 'gallery') {
+                    if (window.galleryImages.length === 0) {
+                        window.loadGalleryImages();
+                    } else {
+                        window.displayGalleryImages('all');
                     }
                 }
             }
@@ -804,9 +796,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 갤러리 이미지 로드
-    let galleryImages = [];
+    window.galleryImages = [];
     
-    async function loadGalleryImages() {
+    window.loadGalleryImages = async function() {
         try {
             // 실제 갤러리 폴더의 이미지들을 정의
             const galleryData = {
@@ -857,15 +849,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 갤러리 이미지 표시
-    function displayGalleryImages(category) {
+    window.displayGalleryImages = function(category) {
         const container = document.getElementById('galleryContainer');
         
-        let filteredImages = galleryImages;
+        let filteredImages = window.galleryImages;
         if (category !== 'all') {
-            filteredImages = galleryImages.filter(img => img.category === category);
+            filteredImages = window.galleryImages.filter(img => img.category === category);
         }
         // "전체" 카테고리일 때는 모든 이미지를 보여줌
-        if (category === 'all' && galleryImages.length === 0) {
+        if (category === 'all' && window.galleryImages.length === 0) {
             container.innerHTML = '<p style="text-align: center; color: #8e8e8e; padding: 40px;">이미지가 없습니다.</p>';
             return;
         }
@@ -976,16 +968,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         deferredPrompt = e;
         installButton.style.display = 'block';
-    });
-
-    installButton.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`PWA install outcome: ${outcome}`);
-            deferredPrompt = null;
-            installButton.style.display = 'none';
-        }
     });
 
     // Service Worker 등록
