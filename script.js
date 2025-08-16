@@ -864,12 +864,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (category !== 'all') {
             filteredImages = galleryImages.filter(img => img.category === category);
         }
-        
+        // "전체" 카테고리일 때는 모든 이미지를 보여줌
+        if (category === 'all' && galleryImages.length === 0) {
+            container.innerHTML = '<p style="text-align: center; color: #8e8e8e; padding: 40px;">이미지가 없습니다.</p>';
+            return;
+        }
         if (filteredImages.length === 0) {
             container.innerHTML = '<p style="text-align: center; color: #8e8e8e; padding: 40px;">이미지가 없습니다.</p>';
             return;
         }
-        
         container.innerHTML = filteredImages.map(image => `
             <div class="gallery-item">
                 <img src="${image.path}" alt="${image.title}" onerror="this.style.display='none'">

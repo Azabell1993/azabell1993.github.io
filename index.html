@@ -371,7 +371,7 @@
                             <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
-                    
+                    <!-- galleryContainer는 비워둡니다. JS에서 자동으로 채워짐 -->
                     <div class="portfolio-card animate-card">
                         <div class="card-image">
                             <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop&crop=center" alt="Memory Management" />
@@ -449,22 +449,46 @@
                     <p>드로잉과 일러스트 작품들</p>
                 </div>
                 <div class="gallery-categories">
+                    <button class="category-btn active" data-category="all">전체</button>                    
                     <button class="category-btn" data-category="anatomy">해부학</button>
                     <button class="category-btn" data-category="comic">코믹</button>
                     <button class="category-btn" data-category="person">인물화</button>
                     <button class="category-btn" data-category="cad">CAD</button>
                 </div>
                 <div class="gallery-grid" id="galleryContainer">
-                    <div class="loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>갤러리 이미지를 불러오는 중...</p>
-                    </div>
+                    <!-- JS에서 자동으로 전체 이미지를 표시합니다 -->
                 </div>
+                <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    // "전체" 버튼 active 처리
+                    const allBtn = document.querySelector('.category-btn[data-category="all"]');
+                    if (allBtn) {
+                        allBtn.classList.add('active');
+                    }
+                    // 갤러리 데이터가 없으면 로드, 있으면 바로 표시
+                    if (typeof galleryImages === 'undefined' || galleryImages.length === 0) {
+                        if (typeof loadGalleryImages === 'function') {
+                            loadGalleryImages();
+                        }
+                    } else {
+                        if (typeof displayGalleryImages === 'function') {
+                            displayGalleryImages('all');
+                        }
+                    }
+                    // 로딩 메시지 숨김
+                    const galleryContainer = document.getElementById('galleryContainer');
+                    if (galleryContainer) {
+                        const loadingDiv = galleryContainer.querySelector('.loading');
+                        if (loadingDiv) {
+                            loadingDiv.style.display = 'none';
+                        }
+                    }
+                });
+                </script>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html>
 </html>
