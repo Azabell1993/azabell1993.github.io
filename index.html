@@ -110,10 +110,34 @@
                 <div class="content-header">
                     <h2>Welcome to My Portfolio</h2>
                     <div class="intro-card">
-                    <div class="intro-icon">
-                        <img src="gallery/minigpt.png" alt="인물화2" onerror="this.src='default.jpg';">
+                        <div class="hero-media" style="position:relative;width:100%;height:320px;overflow:hidden;border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.08);margin-bottom:18px;">
+                            <video
+                                class="ytbg"
+                                title="Hyundai Card • Tech & AI"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                preload="metadata"
+                                controlslist="nodownload noremoteplayback"
+                                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block;"
+                                poster="moon.png"
+                                onloadeddata="setTimeout(()=>this.closest('.hero-media')?.classList.add('ready'), 2000)"
+                            >
+                                <source src="ml-engine.mp4" type="video/mp4">
+                            </video>
+                            <a href="https://www.youtube.com/watch?v=4t7U04pCidk" target="_blank" rel="noopener" style="position:absolute;bottom:12px;right:18px;background:rgba(37,99,235,0.85);color:#fff;padding:7px 16px;border-radius:8px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(37,99,235,0.13);z-index:2;">
+                                <i class="fab fa-youtube"></i> 유튜브에서 보기
+                            </a>
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const video = document.querySelector('.hero-media video');
+                                if (video) video.playbackRate = 5.0;
+                            });
+                        </script>
                     </div>
-                    <div class="intro-content">
+                    <!-- <div class="intro-content">
                         <h3>minigpt.dothome.co.kr</h3>
                         <p>
                             다양한 개발 실험, 논문 기반 AI 데모, 실시간 코드 뷰어, 미니 GPT 논문 실습 등<br>
@@ -121,7 +145,7 @@
                                 minigpt.dothome.co.kr
                             </a>
                         </p>
-                    </div>
+                    </div> -->
                 </div>
 
                 <style>
