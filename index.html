@@ -111,21 +111,20 @@
                     <h2>Welcome to My Portfolio</h2>
                     <div class="intro-card">
                         <div class="hero-media" style="position:relative;width:100%;height:320px;overflow:hidden;border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.08);margin-bottom:18px;">
-                            <video
-                                class="ytbg"
+                            <!-- 헤드라인 추가 -->
+                            <div style="position:absolute;top:18px;left:24px;z-index:3;background:rgba(37,99,235,0.82);color:#fff;padding:12px 24px;border-radius:12px;font-size:1.25em;font-weight:800;box-shadow:0 2px 8px rgba(37,99,235,0.13);letter-spacing:-0.5px;opacity:0.85;">
+                                LLM Engine <span style="color:#ffd700;">C++20</span> · llama.cpp(GGUF) · LoRA-enabled Inference
+                            </div>
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src="https://www.youtube.com/embed/4t7U04pCidk?autoplay=1&mute=1&loop=1&playlist=4t7U04pCidk"
                                 title="Hyundai Card • Tech & AI"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                                preload="metadata"
-                                controlslist="nodownload noremoteplayback"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                                allowfullscreen
                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block;"
-                                poster="moon.png"
-                                onloadeddata="setTimeout(()=>this.closest('.hero-media')?.classList.add('ready'), 2000)"
-                            >
-                                <source src="ml-engine_2.mp4" type="video/mp4">
-                            </video>
+                            ></iframe>
                             <a href="https://www.youtube.com/watch?v=4t7U04pCidk" target="_blank" rel="noopener" style="position:absolute;bottom:12px;right:18px;background:rgba(37,99,235,0.85);color:#fff;padding:7px 16px;border-radius:8px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(37,99,235,0.13);z-index:2;">
                                 <i class="fab fa-youtube"></i> 유튜브에서 보기
                             </a>
