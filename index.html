@@ -46,6 +46,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+</style>
 <body>
     <div class="main-container">
         <!-- 왼쪽 사이드바 -->
@@ -112,9 +116,172 @@
                     <div class="intro-card">
                         <div class="hero-media" style="position:relative;width:100%;height:320px;overflow:hidden;border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.08);margin-bottom:18px;">
                             <!-- 헤드라인 추가 -->
-                            <div style="position:absolute;top:18px;left:24px;z-index:3;background:rgba(37,99,235,0.82);color:#fff;padding:12px 24px;border-radius:12px;font-size:1.25em;font-weight:800;box-shadow:0 2px 8px rgba(37,99,235,0.13);letter-spacing:-0.5px;opacity:0.85;">
-                                LLM Engine <span style="color:#ffd700;">C++20</span> · llama.cpp(GGUF) · LoRA-enabled Inference
+                            <div class="hero-badge">
+                                <div class="badge-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="badge-content">
+                                    <div class="badge-title">
+                                        LLM Engine <span class="highlight-tech">C++20</span>
+                                    </div>
+                                    <div class="badge-subtitle">
+                                        llama.cpp(Deepseek GGUF) · LoRA-enabled Inference
+                                    </div>
+                                </div>
+                                <div class="badge-status">
+                                    <span class="status-dot"></span>
+                                    ACTIVE
+                                </div>
                             </div>
+                            <!-- ...existing code... -->
+                            
+                            <style>
+                            /* Hero Badge 스타일 추가 */
+                            .hero-badge {
+                                position: absolute;
+                                top: 20px;
+                                left: 20px;
+                                z-index: 3;
+                                background: linear-gradient(135deg, rgba(37,99,235,0.95) 0%, rgba(59,130,246,0.9) 100%);
+                                backdrop-filter: blur(10px);
+                                border: 1px solid rgba(255,255,255,0.1);
+                                color: #fff;
+                                padding: 16px 20px;
+                                border-radius: 16px;
+                                font-weight: 700;
+                                box-shadow: 
+                                    0 8px 32px rgba(37,99,235,0.3),
+                                    0 4px 16px rgba(0,0,0,0.1),
+                                    inset 0 1px 0 rgba(255,255,255,0.1);
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                max-width: 90%;
+                                transition: all 0.3s ease;
+                                animation: fadeInScale 0.6s ease-out;
+                            }
+                            
+                            .hero-badge:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 
+                                    0 12px 40px rgba(37,99,235,0.4),
+                                    0 6px 20px rgba(0,0,0,0.15),
+                                    inset 0 1px 0 rgba(255,255,255,0.15);
+                            }
+                            
+                            .badge-icon {
+                                flex-shrink: 0;
+                                width: 40px;
+                                height: 40px;
+                                background: rgba(255,255,255,0.15);
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 18px;
+                            }
+                            
+                            .badge-content {
+                                flex: 1;
+                                min-width: 0;
+                            }
+                            
+                            .badge-title {
+                                font-size: 1.1em;
+                                font-weight: 800;
+                                letter-spacing: -0.3px;
+                                margin-bottom: 2px;
+                                line-height: 1.2;
+                            }
+                            
+                            .highlight-tech {
+                                color: #ffd700;
+                                background: rgba(255,215,0,0.15);
+                                padding: 2px 8px;
+                                border-radius: 6px;
+                                font-size: 0.9em;
+                                font-weight: 900;
+                                text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+                            }
+                            
+                            .badge-subtitle {
+                                font-size: 0.8em;
+                                opacity: 0.9;
+                                font-weight: 500;
+                                color: rgba(255,255,255,0.95);
+                                line-height: 1.3;
+                            }
+                            
+                            .badge-status {
+                                display: flex;
+                                align-items: center;
+                                gap: 6px;
+                                font-size: 0.7em;
+                                font-weight: 600;
+                                color: rgba(255,255,255,0.8);
+                                padding: 4px 8px;
+                                background: rgba(255,255,255,0.1);
+                                border-radius: 8px;
+                                border: 1px solid rgba(255,255,255,0.1);
+                            }
+                            
+                            .status-dot {
+                                width: 6px;
+                                height: 6px;
+                                background: #10b981;
+                                border-radius: 50%;
+                                animation: pulse 2s infinite;
+                                box-shadow: 0 0 6px rgba(16,185,129,0.6);
+                            }
+                            
+                            @keyframes fadeInScale {
+                                0% {
+                                    opacity: 0;
+                                    transform: scale(0.8) translateY(10px);
+                                }
+                                100% {
+                                    opacity: 1;
+                                    transform: scale(1) translateY(0);
+                                }
+                            }
+                            
+                            @keyframes pulse {
+                                0%, 100% {
+                                    opacity: 1;
+                                    transform: scale(1);
+                                }
+                                50% {
+                                    opacity: 0.7;
+                                    transform: scale(1.1);
+                                }
+                            }
+                            
+                            /* 반응형 디자인 */
+                            @media (max-width: 768px) {
+                                .hero-badge {
+                                    flex-direction: column;
+                                    align-items: flex-start;
+                                    gap: 8px;
+                                    padding: 12px 16px;
+                                    top: 16px;
+                                    left: 16px;
+                                    right: 16px;
+                                    max-width: none;
+                                }
+                                
+                                .badge-title {
+                                    font-size: 1em;
+                                }
+                                
+                                .badge-subtitle {
+                                    font-size: 0.75em;
+                                }
+                                
+                                .badge-status {
+                                    align-self: flex-end;
+                                }
+                            }
+                            </style>
                             <iframe
                                 width="100%"
                                 height="100%"
@@ -136,15 +303,6 @@
                             });
                         </script>
                     </div>
-                    <!-- <div class="intro-content">
-                        <h3>minigpt.dothome.co.kr</h3>
-                        <p>
-                            다양한 개발 실험, 논문 기반 AI 데모, 실시간 코드 뷰어, 미니 GPT 논문 실습 등<br>
-                            <a href="http://minigpt.dothome.co.kr" target="_blank" rel="noopener">
-                                minigpt.dothome.co.kr
-                            </a>
-                        </p>
-                    </div> -->
                 </div>
 
                 <style>
@@ -224,7 +382,6 @@
                     margin-bottom: 4px;
                 }
                 </style>
-                </div>
                 
                 <!-- 최근 활동 섹션 -->
                 <div class="home-section">
@@ -270,6 +427,9 @@
                                 <span>ECDSA</span>
                                 <span>AES-256</span>
                             </div>
+                            <a href="https://github.com/Azabell1993/ImSQL" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                         <div class="portfolio-card compact animate-card">
                             <div class="card-image">
@@ -313,6 +473,9 @@
                                 <span>API</span>
                                 <span>Memory</span>
                             </div>
+                            <a href="https://github.com/Azabell1993/c_smartpointer" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                         
                         <div class="portfolio-card compact animate-card">
@@ -326,6 +489,9 @@
                                 <span>QT</span>
                                 <span>OS</span>
                             </div>
+                            <a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -416,15 +582,14 @@
                         <h3 style="color:#2563eb;font-weight:800;">ML Engine <span style="font-size:0.8em;color:#fff;background:#2563eb;padding:2px 8px;border-radius:8px;margin-left:6px;vertical-align:middle;">메인 플젝</span></h3>
                         <p>딥러닝/머신러닝 모델 관리 및 배포 자동화 엔진</p>
                         <div class="tech-tags">
-                                <span>C++</span>
-                                <span>LibTorch</span>
-                                <span>DeepSeek gguf</span>
+                            <span>C++</span>
+                            <span>LibTorch</span>
+                            <span>DeepSeek gguf</span>
                         </div>
                         <a href="https://github.com/Azabell1993/ml-engine" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
                             <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
-                    <!-- galleryContainer는 비워둡니다. JS에서 자동으로 채워짐 -->
                     <div class="portfolio-card animate-card">
                         <div class="card-image">
                             <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop&crop=center" alt="Memory Management" />
