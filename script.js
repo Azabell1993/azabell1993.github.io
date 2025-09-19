@@ -169,12 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="post-content">
                     <p>${item.commit.commit.message} 🚀</p>
-                    <div class="post-image">
-                        <div class="code-preview">
-                            <span>// ${item.repo.name} - ${item.repo.language || 'Mixed Languages'}</span>
-                            ${item.repo.description ? `<br><span style="opacity: 0.7;">${item.repo.description}</span>` : ''}
-                        </div>
-                    </div>
                     <div style="margin-top: 10px;">
                         <a href="${item.repo.html_url}" target="_blank" style="color: #4A90E2; text-decoration: none;">
                             <i class="fab fa-github"></i> 레포지토리 보기
