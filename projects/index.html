@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects — open-source and research software by Jiwoo. Local LLM runtime, OS internals, ML inference engine.">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Projects — Jiwoo">
+  <meta property="og:description" content="Research and engineering software: local LLM runtime in Rust, OS structure learning in Qt/C++, C++ LibTorch inference pipeline.">
+  <meta property="og:url"         content="https://azabell1993.github.io/projects/">
+  <title>Projects &mdash; Jiwoo</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-name">Jiwoo</a>
+      <button class="nav-toggle"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/cv/">CV</a>
+        <a href="/research/">Research</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/">Notes</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+
+      <div class="page-intro">
+        <h1>Projects</h1>
+        <p>Research and engineering software, developed in parallel with graduate research activity. All source code is available on <a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a>.</p>
+      </div>
+
+
+      <!-- ── Project cards ──────────────────────────────────────── -->
+      <div class="card-grid" role="list">
+
+        <!-- Project 1: llmrc -->
+        <article class="card" role="listitem">
+          <div>
+            <a class="card-name"
+               href="https://github.com/Azabell1993/llmrc"
+               rel="noopener noreferrer">llmrc</a>
+            <span class="card-status">active</span>
+          </div>
+          <p class="card-description">Local LLM runtime written in Rust. Loads GGUF-format models, bridges to C++ inference libraries via FFI, and exposes an HTTP inference interface. Designed for cross-platform (macOS / Linux) reproducible local LLM execution with a focus on resource-constrained deployability.</p>
+          <div class="card-footer">
+            <ul class="tag-list" aria-label="Technologies">
+              <li><span class="tag">Rust</span></li>
+              <li><span class="tag">C++ FFI</span></li>
+              <li><span class="tag">GGUF</span></li>
+              <li><span class="tag">HTTP</span></li>
+            </ul>
+            <ul class="card-links" aria-label="Links">
+              <li><a href="https://github.com/Azabell1993/llmrc"
+                     rel="noopener noreferrer"
+                     aria-label="llmrc on GitHub">GitHub</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Project 2: QT_Kernel_OS -->
+        <article class="card" role="listitem">
+          <div>
+            <a class="card-name"
+               href="https://github.com/Azabell1993/QT_Kernel_OS"
+               rel="noopener noreferrer">QT_Kernel_OS</a>
+            <span class="card-status">active</span>
+          </div>
+          <p class="card-description">Qt/C++ CLI-based OS internals learning project. Implements and visualises core OS concepts: process scheduling, memory management, and file system structures. Designed for systematic study of kernel architecture through hands-on experimentation.</p>
+          <div class="card-footer">
+            <ul class="tag-list" aria-label="Technologies">
+              <li><span class="tag">C++</span></li>
+              <li><span class="tag">Qt</span></li>
+              <li><span class="tag">systems</span></li>
+            </ul>
+            <ul class="card-links" aria-label="Links">
+              <li><a href="https://github.com/Azabell1993/QT_Kernel_OS"
+                     rel="noopener noreferrer"
+                     aria-label="QT_Kernel_OS on GitHub">GitHub</a></li>
+              <li><a href="https://azabell1993.github.io/QT_Kernel_OS/files.html"
+                     rel="noopener noreferrer"
+                     aria-label="QT_Kernel_OS demo">Demo</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Project 3: ml-engine -->
+        <article class="card" role="listitem">
+          <div>
+            <a class="card-name"
+               href="https://github.com/Azabell1993/ml-engine"
+               rel="noopener noreferrer">ml-engine</a>
+            <span class="card-status">research</span>
+          </div>
+          <p class="card-description">C++ inference environment built on LibTorch. Implements a model loading pipeline, a lightweight REST API for inference serving, and experimental integration with GGUF/llama.cpp backends. Developed as a practical substrate for edge AI research.</p>
+          <div class="card-footer">
+            <ul class="tag-list" aria-label="Technologies">
+              <li><span class="tag">C++</span></li>
+              <li><span class="tag">LibTorch</span></li>
+              <li><span class="tag">REST</span></li>
+              <li><span class="tag">llama.cpp</span></li>
+            </ul>
+            <ul class="card-links" aria-label="Links">
+              <li><a href="https://github.com/Azabell1993/ml-engine"
+                     rel="noopener noreferrer"
+                     aria-label="ml-engine on GitHub">GitHub</a></li>
+            </ul>
+          </div>
+        </article>
+
+      </div><!-- /.card-grid -->
+
+
+      <section aria-labelledby="other-heading" class="mt-8">
+        <h2 class="section-heading" id="other-heading">Other Work</h2>
+        <ul class="entry-list">
+
+          <li class="entry">
+            <span class="entry-title">
+              <a class="entry-title"
+                 href="https://github.com/Azabell1993"
+                 rel="noopener noreferrer">Additional repositories &amp; experiments</a>
+            </span>
+            <span class="entry-meta">ongoing</span>
+            <span class="entry-sub">Smaller tools, build scripts, and exploratory experiments related to edge AI and systems programming. See the GitHub profile for the full listing.</span>
+          </li>
+
+        </ul>
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Jiwoo</span>
+      <nav aria-label="Footer navigation">
+        <ul class="link-row">
+          <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="mailto:jeewoo19930315@gmail.com">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

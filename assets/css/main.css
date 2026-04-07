@@ -1,0 +1,1060 @@
+/* ================================================================
+   Azabell1993.GITHUB.IO  ·  main.css
+   ================================================================
+
+   Table of Contents
+     1.  Design tokens (CSS custom properties)
+     2.  Reset & base elements
+     3.  Accessibility helpers
+     4.  Layout shell
+     5.  Site header & navigation
+     6.  Site footer
+     7.  Page intro block
+     8.  Prose regions
+     9.  Component — entry  (CV items, notes list rows)
+    10.  Component — card   (project cards)
+    11.  Component — tag / label
+    12.  Component — skills table
+    13.  Component — inline link row
+    14.  Home page sections
+    15.  CV page
+    16.  Research page
+    17.  Contact page
+    18.  Utilities
+    19.  Responsive (≤ 640 px)
+    20.  Print (CV)
+
+   ================================================================ */
+
+
+/* ------------------------------------------------------------------
+   1. Design tokens
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Palette */
+  --c-bg:           #ffffff;
+  --c-bg-subtle:    #f8fafc;
+  --c-bg-muted:     #f1f5f9;
+  --c-text:         #0f172a;
+  --c-text-muted:   #475569;
+  --c-text-faint:   #94a3b8;
+  --c-accent:       #1d4ed8;
+  --c-accent-dark:  #1e3a8a;
+  --c-border:       #e2e8f0;
+  --c-border-dark:  #cbd5e1;
+
+  /* Typography */
+  --f-sans: system-ui, -apple-system, 'Segoe UI', Roboto,
+            'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code',
+            Consolas, 'Courier New', monospace;
+
+  /* Spacing (4-point scale) */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* Layout */
+  --max-w:  1000px;
+  --nav-h:  56px;
+  --radius: 4px;
+}
+
+
+/* ------------------------------------------------------------------
+   2. Reset & base elements
+   ------------------------------------------------------------------ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--f-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--c-accent-dark);
+}
+
+ul, ol {
+  padding-left: 1.35rem;
+}
+
+li {
+  margin-bottom: var(--sp-1);
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 1.875rem; }
+h2 { font-size: 1.375rem; }
+h3 { font-size: 1.125rem; }
+h4 { font-size: 1rem; }
+
+p {
+}
+
+strong {
+  font-weight: 600;
+}
+
+code {
+  font-family: var(--f-mono);
+  font-size: 0.875em;
+  background: var(--c-bg-muted);
+  border: 1px solid var(--c-border);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  font-family: var(--f-mono);
+  font-size: 0.875rem;
+  background: var(--c-bg-muted);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--sp-4) var(--sp-6);
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+blockquote {
+  border-left: 3px solid var(--c-accent);
+  padding-left: var(--sp-4);
+  color: var(--c-text-muted);
+  font-style: italic;
+  margin: var(--sp-4) 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--c-border);
+  margin: var(--sp-8) 0;
+}
+
+
+/* ------------------------------------------------------------------
+   3. Accessibility helpers
+   ------------------------------------------------------------------ */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-4);
+  z-index: 9999;
+  background: var(--c-text);
+  color: var(--c-bg);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.1s;
+}
+
+.skip-link:focus {
+  top: var(--sp-2);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* ------------------------------------------------------------------
+   4. Layout shell
+   ------------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--sp-6);
+}
+
+main {
+  flex: 1 1 auto;
+  padding-top: var(--sp-10);
+  padding-bottom: var(--sp-16);
+}
+
+
+/* ------------------------------------------------------------------
+   5. Site header & navigation
+   ------------------------------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.site-header .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.site-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  margin-right: auto;
+}
+
+.site-name:hover {
+  color: var(--c-accent);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.site-nav a {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  text-decoration: none;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius);
+  transition: color 0.12s, background-color 0.12s;
+}
+
+.site-nav a:hover {
+  color: var(--c-text);
+  background-color: var(--c-bg-muted);
+}
+
+.site-nav a[aria-current="page"],
+.site-nav a.active {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+/* Hamburger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 7px 6px;
+  background: none;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--c-text);
+  border-radius: 2px;
+}
+
+
+/* ------------------------------------------------------------------
+   6. Site footer
+   ------------------------------------------------------------------ */
+
+.site-footer {
+  border-top: 1px solid var(--c-border);
+  background: var(--c-bg-subtle);
+  padding: var(--sp-6) 0;
+  font-size: 0.875rem;
+  color: var(--c-text-muted);
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.site-footer a {
+  color: var(--c-text-muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--c-accent);
+}
+
+
+/* ------------------------------------------------------------------
+   7. Page intro block
+   ------------------------------------------------------------------ */
+
+.page-intro {
+  padding-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: var(--sp-8);
+}
+
+.page-intro h1 {
+  margin-bottom: var(--sp-3);
+}
+
+.page-intro p {
+  color: var(--c-text-muted);
+  font-size: 1.05rem;
+}
+
+.page-intro .meta-line {
+  font-size: 0.875rem;
+  color: var(--c-text-faint);
+  margin-top: var(--sp-3);
+}
+
+
+/* ------------------------------------------------------------------
+   8. Prose regions
+   ------------------------------------------------------------------ */
+
+.prose > * + * {
+  margin-top: var(--sp-4);
+}
+
+.prose h2 {
+  margin-top: var(--sp-10);
+}
+
+.prose h3 {
+  margin-top: var(--sp-6);
+}
+
+.prose ul,
+.prose ol {
+}
+
+
+/* ------------------------------------------------------------------
+   9. Component — entry  (CV items, notes list)
+   ------------------------------------------------------------------ */
+
+.entry-list {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  column-gap: var(--sp-6);
+  row-gap: var(--sp-1);
+  padding: var(--sp-5) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.entry-title {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+a.entry-title:hover {
+  color: var(--c-accent);
+}
+
+.entry-meta {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 0.8125rem;
+  color: var(--c-text-faint);
+  white-space: nowrap;
+  text-align: right;
+  line-height: 1.5;
+  padding-top: 0.175rem;
+}
+
+.entry-sub {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+
+.entry-body {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  margin-top: var(--sp-2);
+}
+
+.entry-body ul {
+  margin: var(--sp-2) 0 0;
+}
+
+/* Section divider used in CV */
+.section-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  margin-top: var(--sp-10);
+  margin-bottom: var(--sp-4);
+}
+
+
+/* ------------------------------------------------------------------
+   10. Component — card  (project cards)
+   ------------------------------------------------------------------ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+.card {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  background: var(--c-bg);
+}
+
+.card:hover {
+  border-color: var(--c-border-dark);
+}
+
+.card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+a.card-name:hover {
+  color: var(--c-accent);
+}
+
+.card-status {
+  font-size: 0.75rem;
+  font-family: var(--f-mono);
+  color: var(--c-text-faint);
+  margin-left: var(--sp-2);
+  font-weight: 400;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+}
+
+.card-links {
+  display: flex;
+  gap: var(--sp-4);
+  font-size: 0.8125rem;
+}
+
+.card-links a {
+  color: var(--c-text-muted);
+  text-decoration: none;
+}
+
+.card-links a:hover {
+  color: var(--c-accent);
+}
+
+
+/* ------------------------------------------------------------------
+   11. Component — tag / label
+   ------------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  background: var(--c-bg-muted);
+  border: 1px solid var(--c-border);
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  list-style: none;
+  padding: 0;
+}
+
+
+/* ------------------------------------------------------------------
+   12. Component — skills table
+   ------------------------------------------------------------------ */
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.skills-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--c-text);
+  padding: var(--sp-3) var(--sp-5) var(--sp-3) 0;
+  border-bottom: 1px solid var(--c-border);
+  white-space: nowrap;
+  vertical-align: top;
+  width: 10rem;
+}
+
+.skills-table td {
+  padding: var(--sp-3) var(--sp-4) var(--sp-3) 0;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.skills-table thead th {
+  border-bottom: 2px solid var(--c-border-dark);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.skills-table tr:last-child th,
+.skills-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ------------------------------------------------------------------
+   13. Component — inline link row
+   ------------------------------------------------------------------ */
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.link-row a {
+  text-decoration: none;
+  color: var(--c-text-muted);
+}
+
+.link-row a:hover {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* ------------------------------------------------------------------
+   14. Home page sections
+   ------------------------------------------------------------------ */
+
+.home-intro {
+  padding: var(--sp-10) 0 var(--sp-8);
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: var(--sp-8);
+}
+
+.home-name {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--sp-2);
+}
+
+.home-tagline {
+  font-size: 0.9375rem;
+  color: var(--c-text-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.home-bio {
+  line-height: 1.7;
+  margin-bottom: var(--sp-4);
+}
+
+.home-section {
+  margin-bottom: var(--sp-10);
+}
+
+.home-section-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  margin-bottom: var(--sp-4);
+}
+
+.interest-list {
+  list-style: none;
+  padding: 0;
+  column-count: 2;
+  column-gap: var(--sp-6);
+}
+
+.interest-list li {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  padding: var(--sp-1) 0;
+  break-inside: avoid;
+  margin-bottom: 0;
+}
+
+.interest-list li::before {
+  content: '\2014'; /* em dash */
+  color: var(--c-text-faint);
+  margin-right: var(--sp-2);
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.highlights-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-6);
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--c-border);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.hl-label {
+  color: var(--c-text);
+}
+
+.hl-label a {
+  color: var(--c-text);
+}
+
+.hl-label a:hover {
+  color: var(--c-accent);
+}
+
+.hl-date {
+  font-size: 0.8125rem;
+  color: var(--c-text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+
+/* ------------------------------------------------------------------
+   15. CV page
+   ------------------------------------------------------------------ */
+
+.cv-pub {
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.cv-pub:first-of-type {
+  border-top: 1px solid var(--c-border);
+}
+
+.cv-pub-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: var(--sp-1);
+}
+
+.cv-pub-meta {
+  font-size: 0.875rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+}
+
+.cv-pub-meta a {
+  color: var(--c-text-muted);
+}
+
+.cv-pub-meta a:hover {
+  color: var(--c-accent);
+}
+
+.cv-download-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  font-size: 0.875rem;
+  color: var(--c-text-faint);
+  margin-bottom: var(--sp-8);
+}
+
+.cv-download-bar a {
+  color: var(--c-text-muted);
+}
+
+
+/* ------------------------------------------------------------------
+   16. Research page
+   ------------------------------------------------------------------ */
+
+.research-area {
+  padding: var(--sp-6) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.research-area:first-of-type {
+  border-top: 1px solid var(--c-border);
+}
+
+.research-area h3 {
+  margin-bottom: var(--sp-3);
+}
+
+.research-area p {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.research-area .tag-list {
+  margin-top: var(--sp-3);
+}
+
+
+/* ------------------------------------------------------------------
+   17. Contact page
+   ------------------------------------------------------------------ */
+
+.contact-item {
+  padding: var(--sp-5) 0;
+  border-bottom: 1px solid var(--c-border);
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--sp-4);
+  align-items: baseline;
+}
+
+.contact-item:first-of-type {
+  border-top: 1px solid var(--c-border);
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.contact-value {
+  font-size: 0.9375rem;
+  color: var(--c-text);
+}
+
+.contact-note {
+  font-size: 0.875rem;
+  color: var(--c-text-muted);
+  margin-top: var(--sp-1);
+}
+
+
+/* ------------------------------------------------------------------
+   18. Utilities
+   ------------------------------------------------------------------ */
+
+.text-muted  { color: var(--c-text-muted); }
+.text-faint  { color: var(--c-text-faint); }
+.text-sm     { font-size: 0.875rem; }
+.text-xs     { font-size: 0.75rem; }
+.font-mono   { font-family: var(--f-mono); }
+
+.mt-2  { margin-top: var(--sp-2); }
+.mt-4  { margin-top: var(--sp-4); }
+.mt-6  { margin-top: var(--sp-6); }
+.mt-8  { margin-top: var(--sp-8); }
+.mb-4  { margin-bottom: var(--sp-4); }
+.mb-8  { margin-bottom: var(--sp-8); }
+
+
+/* ------------------------------------------------------------------
+   19. Responsive  (≤ 900 px — tablet)
+   ------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3);
+  }
+
+  .interest-list {
+    column-gap: var(--sp-4);
+  }
+
+  .contact-item {
+    grid-template-columns: 7.5rem 1fr;
+  }
+
+  .skills-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .entry {
+    column-gap: var(--sp-3);
+  }
+}
+
+
+/* ------------------------------------------------------------------
+   19b. Responsive  (≤ 640 px — mobile)
+   ------------------------------------------------------------------ */
+
+@media (max-width: 640px) {
+  /* Header collapses to multi-line */
+  .site-header {
+    height: auto;
+    min-height: 52px;
+    position: sticky;
+  }
+
+  .site-header .container {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: var(--sp-3);
+    gap: var(--sp-3);
+  }
+
+  .site-name {
+    margin-right: auto;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0;
+    border-top: 1px solid var(--c-border);
+    padding-top: var(--sp-2);
+    padding-bottom: var(--sp-2);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    font-size: 0.9375rem;
+    width: 100%;
+    padding: var(--sp-2) var(--sp-2);
+  }
+
+  /* Main content */
+  main {
+    padding-top: var(--sp-6);
+    padding-bottom: var(--sp-12);
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+
+  .home-name {
+    font-size: 1.625rem;
+  }
+
+  /* Cards: 1 column */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Interest list: single column */
+  .interest-list {
+    column-count: 1;
+  }
+
+  /* Entry: flatten grid to single column */
+  .entry {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-meta {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+
+  .entry-sub  { grid-row: 3; }
+  .entry-body { grid-row: 4; }
+
+  /* Contact: single column */
+  .contact-item {
+    grid-template-columns: 1fr;
+    gap: var(--sp-1);
+  }
+
+  /* Skills table: fixed first column narrower */
+  .skills-table th {
+    width: auto;
+    padding-right: var(--sp-3);
+  }
+}
+
+
+/* ------------------------------------------------------------------
+   20. Print  (CV page — use browser print for PDF)
+   ------------------------------------------------------------------ */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .nav-toggle,
+  .cv-download-bar {
+    display: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  /* Suppress href display for internal links */
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: '';
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entry,
+  .cv-pub {
+    break-inside: avoid;
+  }
+
+  .section-heading {
+    break-before: auto;
+    page-break-before: auto;
+  }
+}

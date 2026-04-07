@@ -1,1329 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azabell1993 - Cross-Platform Developer</title>    
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Azabell1993의 개발 포트폴리오 - C/C++, Java, JavaScript 크로스 플랫폼 개발자">
-    <meta name="keywords" content="developer, portfolio, C++, Java, JavaScript, cross-platform, github">
-    <meta name="author" content="Azabell1993">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Azabell1993 - Cross-Platform Developer">
-    <meta property="og:description" content="크로스 플랫폼 개발자의 포트폴리오">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://azabell1993.github.io">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/4A90E2/FFFFFF?text=Azabell1993+Portfolio">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Azabell1993 - Cross-Platform Developer">
-    <meta name="twitter:description" content="크로스 플랫폼 개발자의 포트폴리오">
-    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/4A90E2/FFFFFF?text=Azabell1993+Portfolio">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#4A90E2">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Azabell1993">
-    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180/4A90E2/FFFFFF?text=A">
-    
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32x32/4A90E2/FFFFFF?text=A">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16x16/4A90E2/FFFFFF?text=A">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preconnect" href="https://api.github.com">
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jiwoo — Full-Time Researcher, Kookmin University Graduate School of Software Convergence, Department of Applied Artificial Intelligence.">
+  <!-- CUSTOMIZE: update name, description, and URL below -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Jiwoo — Researcher, Kookmin University">
+  <meta property="og:description" content="Full-Time Researcher at Kookmin University. Edge AI, lightweight language models, and special communication networks.">
+  <meta property="og:url"         content="https://azabell1993.github.io/">
+  <title>Jiwoo — Researcher, Kookmin University</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-
-<style>
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    
-    /* 스플래시 스크린 고도화 */
-    .splash-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 40% 40%, rgba(6, 214, 160, 0.1) 0%, transparent 40%),
-            linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        overflow: hidden;
-    }
-
-    .splash-screen.fade-out {
-        animation: splashFadeOut 1.2s ease-out forwards;
-    }
-
-    /* 고급 그라데이션 애니메이션 */
-    @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        33% { background-position: 100% 50%; }
-        66% { background-position: 50% 100%; }
-    }
-
-    @keyframes splashFadeOut {
-        0% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.02); }
-        100% { 
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.95);
-        }
-    }
-
-    /* 3D 파티클 시스템 */
-    .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        perspective: 1000px;
-    }
-
-    .particle {
-        position: absolute;
-        border-radius: 50%;
-        background: linear-gradient(45deg, rgba(37, 99, 235, 0.8), rgba(139, 92, 246, 0.6));
-        animation: float3D 8s infinite linear;
-        box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
-    }
-
-    @keyframes float3D {
-        0% {
-            transform: translateY(100vh) translateX(0) rotateX(0deg) scale(0);
-            opacity: 0;
-        }
-        10% { opacity: 1; }
-        50% { 
-            transform: translateY(50vh) translateX(20px) rotateX(180deg) scale(1);
-        }
-        90% { opacity: 1; }
-        100% {
-            transform: translateY(-20vh) translateX(-20px) rotateX(360deg) scale(0.5);
-            opacity: 0;
-        }
-    }
-
-    /* 네트워크 연결 효과 */
-    .network-lines {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    .network-line {
-        position: absolute;
-        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
-        height: 1px;
-        animation: networkPulse 4s ease-in-out infinite;
-    }
-
-    @keyframes networkPulse {
-        0%, 100% { opacity: 0; transform: scaleX(0); }
-        50% { opacity: 1; transform: scaleX(1); }
-    }
-
-    /* 메인 콘텐츠 고도화 */
-    .splash-content {
-        text-align: center;
-        z-index: 10;
-        max-width: 900px;
-        padding: 0 30px;
-        position: relative;
-    }
-
-    /* 홀로그램 효과 로고 */
-    .splash-logo {
-        font-size: 5rem;
-        font-weight: 900;
-        margin-bottom: 30px;
-        background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 30%, #06d6a0 60%, #f59e0b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: 'JetBrains Mono', monospace;
-        letter-spacing: -3px;
-        position: relative;
-        animation: logoHologram 3s ease-in-out infinite;
-    }
-
-    .splash-logo::before {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 2px;
-        color: rgba(37, 99, 235, 0.3);
-        z-index: -1;
-        animation: glitchRed 2s infinite;
-    }
-
-    .splash-logo::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: -2px;
-        color: rgba(6, 214, 160, 0.3);
-        z-index: -2;
-        animation: glitchBlue 2.5s infinite;
-    }
-
-    @keyframes logoHologram {
-        0%, 100% { 
-            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.6));
-            text-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
-        }
-        50% { 
-            filter: drop-shadow(0 0 50px rgba(139, 92, 246, 0.8));
-            text-shadow: 0 0 60px rgba(6, 214, 160, 0.6);
-        }
-    }
-
-    @keyframes glitchRed {
-        0%, 100% { transform: translate(0); }
-        20% { transform: translate(-2px, 2px); }
-        40% { transform: translate(-2px, -2px); }
-        60% { transform: translate(2px, 2px); }
-        80% { transform: translate(2px, -2px); }
-    }
-
-    @keyframes glitchBlue {
-        0%, 100% { transform: translate(0); }
-        25% { transform: translate(2px, -2px); }
-        50% { transform: translate(-2px, 2px); }
-        75% { transform: translate(2px, 2px); }
-    }
-
-    /* 타이핑 효과 */
-    .splash-title {
-        font-size: 2.8rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        color: #e2e8f0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .typing-text {
-        display: inline-block;
-        border-right: 3px solid #2563eb;
-        animation: typing 3s steps(25) 1s both, blink 1s ease-in-out infinite;
-    }
-
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-
-    @keyframes blink {
-        0%, 50% { border-color: transparent; }
-        51%, 100% { border-color: #2563eb; }
-    }
-
-    /* 인터랙티브 기술 스택 */
-    .tech-showcase {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        margin: 50px 0;
-        flex-wrap: wrap;
-        perspective: 1000px;
-    }
-
-    .tech-item {
-        background: linear-gradient(145deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        padding: 15px 30px;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        backdrop-filter: blur(15px);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        cursor: pointer;
-        animation: techFloat 6s ease-in-out infinite;
-    }
-
-    .tech-item::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, #2563eb, #8b5cf6, #06d6a0, #f59e0b);
-        border-radius: 20px;
-        z-index: -1;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .tech-item:hover {
-        transform: translateY(-10px) rotateX(10deg) scale(1.1);
-        box-shadow: 
-            0 20px 40px rgba(37, 99, 235, 0.3),
-            0 0 50px rgba(139, 92, 246, 0.2);
-    }
-
-    .tech-item:hover::before {
-        opacity: 1;
-        animation: borderRotate 2s linear infinite;
-    }
-
-    @keyframes borderRotate {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-
-    .tech-item:nth-child(1) { animation-delay: 0s; }
-    .tech-item:nth-child(2) { animation-delay: 0.5s; }
-    .tech-item:nth-child(3) { animation-delay: 1s; }
-    .tech-item:nth-child(4) { animation-delay: 1.5s; }
-    .tech-item:nth-child(5) { animation-delay: 2s; }
-
-    @keyframes techFloat {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        33% { transform: translateY(-8px) rotate(1deg); }
-        66% { transform: translateY(4px) rotate(-1deg); }
-    }
-
-    /* 진화된 진입 버튼 */
-    .enter-btn {
-        background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 50%, #06d6a0 100%);
-        border: none;
-        color: white;
-        padding: 20px 50px;
-        font-size: 1.2rem;
-        font-weight: 800;
-        border-radius: 25px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 
-            0 15px 35px rgba(37, 99, 235, 0.4),
-            0 5px 15px rgba(0, 0, 0, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    .enter-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transition: left 0.6s ease;
-    }
-
-    .enter-btn:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 
-            0 25px 50px rgba(37, 99, 235, 0.6),
-            0 10px 25px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .enter-btn:hover::before {
-        left: 100%;
-    }
-
-    .enter-btn:active {
-        transform: translateY(-6px) scale(1.02);
-    }
-
-    /* 고도화된 코드 미리보기 */
-    .code-preview {
-        position: absolute;
-        top: 15%;
-        right: 8%;
-        background: rgba(15, 23, 42, 0.95);
-        border: 1px solid rgba(37, 99, 235, 0.4);
-        border-radius: 15px;
-        padding: 25px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.95rem;
-        color: #e2e8f0;
-        backdrop-filter: blur(20px);
-        max-width: 350px;
-        box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.3),
-            0 0 50px rgba(37, 99, 235, 0.2);
-        animation: codeFloat 6s ease-in-out infinite;
-        transition: all 0.3s ease;
-    }
-
-    .code-preview::before {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, #2563eb, #8b5cf6, #06d6a0, #f59e0b);
-        border-radius: 15px;
-        z-index: -1;
-        animation: borderGlow 3s linear infinite;
-    }
-
-    .code-preview:hover {
-        transform: scale(1.02) translateY(-5px);
-        box-shadow: 
-            0 25px 50px rgba(0, 0, 0, 0.4),
-            0 0 80px rgba(37, 99, 235, 0.3);
-    }
-
-    @keyframes codeFloat {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-    }
-
-    /* 진행 바 추가 */
-    .loading-progress {
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 300px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-        overflow: hidden;
-    }
-
-    .progress-bar {
-        height: 100%;
-        background: linear-gradient(90deg, #2563eb, #8b5cf6, #06d6a0);
-        border-radius: 2px;
-        animation: loadingProgress 3s ease-out;
-        box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
-    }
-
-    @keyframes loadingProgress {
-        0% { width: 0%; }
-        100% { width: 100%; }
-    }
-
-    /* 모바일 반응형 개선 */
-    @media (max-width: 768px) {
-        .splash-logo {
-            font-size: 3rem;
-            letter-spacing: -1px;
-        }
-        
-        .splash-title {
-            font-size: 2rem;
-        }
-        
-        .tech-showcase {
-            gap: 15px;
-        }
-        
-        .tech-item {
-            padding: 10px 20px;
-            font-size: 0.95rem;
-        }
-        
-        .code-preview {
-            display: none;
-        }
-        
-        .enter-btn {
-            padding: 16px 40px;
-            font-size: 1rem;
-        }
-        
-        .loading-progress {
-            width: 250px;
-        }
-    }
-
-    /* 추가 효과들 */
-    @keyframes slideInUp {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .splash-subtitle {
-        font-size: 1.4rem;
-        margin-bottom: 40px;
-        color: #94a3b8;
-        font-weight: 500;
-        animation: slideInUp 0.8s ease-out 2s both;
-    }
-
-    .splash-cta {
-        font-size: 1.2rem;
-        color: #cbd5e1;
-        margin-bottom: 30px;
-        animation: slideInUp 0.8s ease-out 2.5s both;
-    }
-</style>
-
 <body>
-    <!-- 스플래시 스크린 -->
-    <div class="splash-screen" id="splashScreen">
-        <!-- 파티클 배경 -->
-        <div class="particles" id="particles"></div>
-        
-        <!-- 네트워크 연결 효과 -->
-        <div class="network-lines" id="networkLines"></div>
-        
-        <!-- 메인 콘텐츠 -->
-        <div class="splash-content">
-            <div class="splash-logo" data-text="AZABELL">AZABELL</div>
-            <h1 class="splash-title">
-                <span class="typing-text">Cross-Platform Developer</span>
-            </h1>
-            <p class="splash-subtitle">Building Tomorrow with C/C++ & LLM</p>
-            
-            <div class="tech-showcase">
-                <div class="tech-item">C/C++</div>
-                <div class="tech-item">llama.cpp</div>
-                <div class="tech-item">DeepSeek</div>
-                <div class="tech-item">LoRA</div>
-                <div class="tech-item">GGUF</div>
-            </div>
-            
-            <p class="splash-cta">방문해주셔서 감사합니다.</p>
-            <button class="enter-btn" onclick="enterPortfolio()">
-                <i class="fas fa-rocket"></i> ENTER PORTFOLIO
-            </button>
-        </div>
-        
-        <!-- 로딩 진행 바 -->
-        <div class="loading-progress">
-            <div class="progress-bar"></div>
-        </div>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================================================
+       Site header / navigation (shared across all pages)
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <!-- CUSTOMIZE: update display name -->
+      <a href="/" class="site-name">Jiwoo</a>
+
+      <button class="nav-toggle"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/cv/">CV</a>
+        <a href="/research/">Research</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/">Notes</a>
+        <a href="/contact/">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="main-container" id="mainContainer" style="display: none;">
-        <!-- 왼쪽 사이드바 -->
-        <div class="sidebar">
-            <div class="toggle-theme">
-                <button id="themeToggle">🌓</button>
-            </div>
-            
-            <div class="profile-section">
-                <div class="profile-image">
-                    <img src="https://via.placeholder.com/150/4A90E2/FFFFFF?text=A" alt="Profile" id="profileImg">
-                </div>
-                <h1 class="username">azabell1993</h1>
-                <p class="bio">Cross-Platform Developer</p>
-                <p class="tech-stack">C/C++ · Java · JavaScript</p>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <span class="count" id="repoCount">-</span>
-                        <span class="label">Repositories</span>
-                    </div>
-                    <div class="stat">
-                        <span class="count" id="followerCount">-</span>
-                        <span class="label">Followers</span>
-                    </div>
-                    <div class="stat">
-                        <span class="count" id="followingCount">-</span>
-                        <span class="label">Following</span>
-                    </div>
-                </div>
+  <!-- ============================================================
+       Main content
+       ============================================================ -->
+  <main id="main-content">
+    <div class="container">
 
-                <!-- 네비게이션 메뉴 (자기소개 바로 아래로 이동) -->
-                <nav class="navigation">
-                    <div class="nav-item active" data-tab="home">
-                        <i class="fas fa-home"></i>
-                        <span>홈</span>
-                    </div>
-                    <div class="nav-item" data-tab="search">
-                        <i class="fas fa-search"></i>
-                        <span>검색</span>
-                    </div>
-                    <div class="nav-item" data-tab="portfolio">
-                        <i class="fas fa-briefcase"></i>
-                        <span>포트폴리오</span>
-                    </div>
-                    <div class="nav-item" data-tab="github">
-                        <i class="fab fa-github"></i>
-                        <span>깃허브 레포</span>
-                    </div>
-                    <div class="nav-item" data-tab="gallery">
-                        <i class="fas fa-images"></i>
-                        <span>갤러리</span>
-                    </div>
-                </nav>
-            </div>
-        </div>
+      <!-- Introduction -->
+      <section class="home-intro" aria-labelledby="home-name">
+        <!-- CUSTOMIZE: your name -->
+        <h1 class="home-name" id="home-name">Jiwoo</h1>
 
-        <!-- 오른쪽 메인 콘텐츠 -->
-        <div class="main-content">
-            <!-- 홈 탭 -->
-            <div class="tab-content active" id="home">
-                <div class="content-header">
-                    <h2>Welcome to My Portfolio</h2>
-                    <div class="intro-card">
-                        <div class="hero-media" style="position:relative;width:100%;height:320px;overflow:hidden;border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.08);margin-bottom:18px;">
-                            <!-- 헤드라인 추가 -->
-                            <div class="hero-badge">
-                                <div class="badge-icon">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <div class="badge-content">
-                                    <div class="badge-title">
-                                        LLM Engine <span class="highlight-tech">C/C++</span>
-                                    </div>
-                                    <div class="badge-subtitle">
-                                        llama.cpp(DeepSeek GGUF) · LoRA-enabled Inference
-                                    </div>
-                                </div>
-                                <div class="badge-status">
-                                    <span class="status-dot"></span>
-                                    ACTIVE
-                                </div>
-                            </div>
-                            <!-- ...existing code... -->
-                            
-                            <style>
-                            /* Hero Badge 스타일 추가 */
-                            .hero-badge {
-                                position: absolute;
-                                top: 20px;
-                                left: 20px;
-                                z-index: 3;
-                                background: linear-gradient(135deg, rgba(37,99,235,0.95) 0%, rgba(59,130,246,0.9) 100%);
-                                backdrop-filter: blur(10px);
-                                border: 1px solid rgba(255,255,255,0.1);
-                                color: #fff;
-                                padding: 16px 20px;
-                                border-radius: 16px;
-                                font-weight: 700;
-                                box-shadow: 
-                                    0 8px 32px rgba(37,99,235,0.3),
-                                    0 4px 16px rgba(0,0,0,0.1),
-                                    inset 0 1px 0 rgba(255,255,255,0.1);
-                                display: flex;
-                                align-items: center;
-                                gap: 12px;
-                                max-width: 90%;
-                                transition: all 0.3s ease;
-                                animation: fadeInScale 0.6s ease-out;
-                            }
-                            
-                            .hero-badge:hover {
-                                transform: translateY(-2px);
-                                box-shadow: 
-                                    0 12px 40px rgba(37,99,235,0.4),
-                                    0 6px 20px rgba(0,0,0,0.15),
-                                    inset 0 1px 0 rgba(255,255,255,0.15);
-                            }
-                            
-                            .badge-icon {
-                                flex-shrink: 0;
-                                width: 40px;
-                                height: 40px;
-                                background: rgba(255,255,255,0.15);
-                                border-radius: 10px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                font-size: 18px;
-                            }
-                            
-                            .badge-content {
-                                flex: 1;
-                                min-width: 0;
-                            }
-                            
-                            .badge-title {
-                                font-size: 1.1em;
-                                font-weight: 800;
-                                letter-spacing: -0.3px;
-                                margin-bottom: 2px;
-                                line-height: 1.2;
-                            }
-                            
-                            .highlight-tech {
-                                color: #ffd700;
-                                background: rgba(255,215,0,0.15);
-                                padding: 2px 8px;
-                                border-radius: 6px;
-                                font-size: 0.9em;
-                                font-weight: 900;
-                                text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-                            }
-                            
-                            .badge-subtitle {
-                                font-size: 0.8em;
-                                opacity: 0.9;
-                                font-weight: 500;
-                                color: rgba(255,255,255,0.95);
-                                line-height: 1.3;
-                            }
-                            
-                            .badge-status {
-                                display: flex;
-                                align-items: center;
-                                gap: 6px;
-                                font-size: 0.7em;
-                                font-weight: 600;
-                                color: rgba(255,255,255,0.8);
-                                padding: 4px 8px;
-                                background: rgba(255,255,255,0.1);
-                                border-radius: 8px;
-                                border: 1px solid rgba(255,255,255,0.1);
-                            }
-                            
-                            .status-dot {
-                                width: 6px;
-                                height: 6px;
-                                background: #10b981;
-                                border-radius: 50%;
-                                animation: pulse 2s infinite;
-                                box-shadow: 0 0 6px rgba(16,185,129,0.6);
-                            }
-                            
-                            @keyframes fadeInScale {
-                                0% {
-                                    opacity: 0;
-                                    transform: scale(0.8) translateY(10px);
-                                }
-                                100% {
-                                    opacity: 1;
-                                    transform: scale(1) translateY(0);
-                                }
-                            }
-                            
-                            @keyframes pulse {
-                                0%, 100% {
-                                    opacity: 1;
-                                    transform: scale(1);
-                                }
-                                50% {
-                                    opacity: 0.7;
-                                    transform: scale(1.1);
-                                }
-                            }
-                            
-                            /* 반응형 디자인 */
-                            @media (max-width: 768px) {
-                                .hero-badge {
-                                    flex-direction: column;
-                                    align-items: flex-start;
-                                    gap: 8px;
-                                    padding: 12px 16px;
-                                    top: 16px;
-                                    left: 16px;
-                                    right: 16px;
-                                    max-width: none;
-                                }
-                                
-                                .badge-title {
-                                    font-size: 1em;
-                                }
-                                
-                                .badge-subtitle {
-                                    font-size: 0.75em;
-                                }
-                                
-                                .badge-status {
-                                    align-self: flex-end;
-                                }
-                            }
-                            </style>
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/4t7U04pCidk?autoplay=1&mute=1&loop=1&playlist=4t7U04pCidk"
-                                title="Hyundai Card • Tech & AI"
-                                frameborder="0"
-                                allow="autoplay; encrypted-media; picture-in-picture"
-                                allowfullscreen
-                                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block;"
-                            ></iframe>
-                            <a href="https://www.youtube.com/watch?v=4t7U04pCidk" target="_blank" rel="noopener" style="position:absolute;bottom:12px;right:18px;background:rgba(37,99,235,0.85);color:#fff;padding:7px 16px;border-radius:8px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(37,99,235,0.13);z-index:2;">
-                                <i class="fab fa-youtube"></i> 유튜브에서 보기
-                            </a>
-                        </div>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const video = document.querySelector('.hero-media video');
-                                if (video) video.playbackRate = 5.0;
-                            });
-                        </script>
-                    </div>
-                </div>
+        <!-- CUSTOMIZE: title, location, affiliation -->
+        <p class="home-tagline">Full-Time Researcher &middot; Kookmin University &middot; Seoul, South Korea</p>
 
-                <style>
-                .intro-card {
-                    margin: 28px 0 16px 0;
-                    padding: 22px 26px;
-                    background: linear-gradient(105deg, #e8f2ff 0%, #fdfdff 100%);
-                    border-radius: 20px;
-                    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
-                    display: flex;
-                    align-items: center;
-                    gap: 26px;
-                    flex-wrap: wrap;
-                    transition: transform 0.25s ease, box-shadow 0.25s ease;
-                }
-                .intro-card:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 28px rgba(37, 99, 235, 0.15);
-                }
+        <!-- CUSTOMIZE: bio paragraph(s) -->
+        <p class="home-bio">I am a full-time researcher at the <a href="https://scrc.kookmin.ac.kr/scrc/index.do" rel="noopener noreferrer">Software Convergence Research Center (SCRC)</a>, Kookmin University, advised by Professor Park Soo-hyun. My research focuses on edge AI and lightweight language model deployment for resource-constrained communication environments, including underwater and polar network systems.</p>
+        <p class="home-bio">My background spans low-level systems software, edge device development, and AI infrastructure engineering. I approach research problems with a systems perspective: implementation constraints, performance trade-offs, and practical deployability on resource-limited hardware.</p>
 
-                .intro-icon {
-                    flex: 0 0 64px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .intro-icon img {
-                    width: 60px;
-                    height: 60px;
-                    object-fit: contain;
-                    border-radius: 12px;
-                    background-color: white;
-                    padding: 6px;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-                }
+        <!-- Keyword tags -->
+        <ul class="tag-list mt-4" aria-label="Research keywords">
+          <li><span class="tag">Edge AI</span></li>
+          <li><span class="tag">SLM / LLM</span></li>
+          <li><span class="tag">Special Communication Networks</span></li>
+          <li><span class="tag">On-Device Inference</span></li>
+          <li><span class="tag">Rust · C++</span></li>
+          <li><span class="tag">Physical AI</span></li>
+        </ul>
 
-                .intro-content {
-                    flex: 1;
-                    min-width: 220px;
-                }
+        <!-- Quick action links -->
+        <ul class="link-row mt-4" aria-label="Quick links">
+          <li><a href="/cv/">View CV</a></li>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="mailto:jeewoo19930315@gmail.com">Email</a></li>
+        </ul>
+      </section>
 
-                .intro-content h3 {
-                    margin: 0 0 8px 0;
-                    font-size: 1.2em;
-                    color: #1e3a8a;
-                    font-weight: 800;
-                    letter-spacing: -0.4px;
-                }
 
-                .intro-content p {
-                    margin: 0 0 8px 0;
-                    font-size: 1em;
-                    color: #1f2937;
-                    line-height: 1.7;
-                }
+      <!-- Research interests -->
+      <section class="home-section" aria-labelledby="interests-heading">
+        <h2 class="home-section-heading" id="interests-heading">Research Interests</h2>
+        <ul class="interest-list">
+          <li>Edge AI and on-device language model inference</li>
+          <li>Lightweight SLM/LLM for resource-constrained environments</li>
+          <li>Special communication networks (underwater, polar)</li>
+          <li>System-level optimization for edge AI deployment</li>
+          <li>Physical AI applications in communication systems</li>
+          <li>Rust &amp; C++ runtime design for local AI execution</li>
+        </ul>
+      </section>
 
-                .intro-content a {
-                    color: #2563eb;
-                    font-weight: 600;
-                    text-decoration: none;
-                    border-bottom: 1px solid rgba(37, 99, 235, 0.4);
-                    transition: color 0.2s, border-color 0.2s;
-                }
-                .intro-content a:hover {
-                    color: #1d4ed8;
-                    border-color: rgba(37, 99, 235, 0.7);
-                }
 
-                .intro-content ul {
-                    margin: 0;
-                    padding-left: 18px;
-                    font-size: 0.96em;
-                    color: #374151;
-                    list-style: square;
-                }
-                .intro-content ul li {
-                    margin-bottom: 4px;
-                }
-                </style>
-                
-                <!-- 최근 활동 섹션 -->
-                <div class="home-section">
-                    <div class="section-header">
-                        <h3><i class="fas fa-clock"></i> 최근 활동</h3>
-                        <a href="#" class="view-more" data-tab="home-commits">더보기</a>
-                    </div>
-                    <div class="posts-grid compact" id="homePostsContainer">
-                        <div class="loading">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            <p>최근 활동을 불러오는 중...</p>
-                        </div>
-                    </div>
-                    <!-- 최근 활동 페이징 -->
-                    <div class="pagination compact" id="homePagination" style="display: none;">
-                        <button class="pagination-btn small" id="homePrevBtn" disabled>
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="page-info small">
-                            <span id="homeCurrentPage">1</span>/<span id="homeTotalPages">1</span>
-                        </div>
-                        <button class="pagination-btn small" id="homeNextBtn">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
+      <!-- Recent activity / highlights -->
+      <section class="home-section" aria-labelledby="recent-heading">
+        <h2 class="home-section-heading" id="recent-heading">Recent</h2>
+        <!-- CUSTOMIZE: update with actual activity, most recent first -->
+        <ul class="highlights-list">
+          <li>
+            <span class="hl-label">Enrolled as M.S. researcher &mdash; Kookmin University, Department of Applied Artificial Intelligence</span>
+            <span class="hl-date">Mar 2026</span>
+          </li>
+          <li>
+            <span class="hl-label"><a href="https://github.com/Azabell1993/llmrc" rel="noopener noreferrer">llmrc</a> &mdash; local LLM runtime (Rust + C++ FFI, GGUF) &mdash; initial release</span>
+            <span class="hl-date">Apr 2026</span>
+          </li>
+          <li>
+            <span class="hl-label">B.S. in Computer Science completed &mdash; Korea National Open University</span>
+            <span class="hl-date">Feb 2026</span>
+          </li>
+          <li>
+            <span class="hl-label"><a href="https://github.com/Azabell1993/ml-engine" rel="noopener noreferrer">ml-engine</a> &mdash; C++ / LibTorch inference pipeline &mdash; in development</span>
+            <span class="hl-date">2025 &ndash;</span>
+          </li>
+        </ul>
+      </section>
 
-                <!-- 포트폴리오 섹션 -->
-                <div class="home-section">
-                    <div class="section-header">
-                        <h3><i class="fas fa-briefcase"></i> 주요 포트폴리오</h3>
-                        <a href="#" class="view-more" data-tab="portfolio">더보기</a>
-                    </div>
-                    <div class="portfolio-preview">
-                        <div class="portfolio-card compact animate-card">
-                            <div class="card-image">
-                                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=300&h=200&fit=crop&crop=center" alt="Database SQL" />
-                            </div>
-                            <h4>ImSQL</h4>
-                            <p>SQL 자동화 및 라이선스 통합 엔진</p>
-                            <div class="tech-tags">
-                                <span>C++</span>
-                                <span>ECDSA</span>
-                                <span>AES-256</span>
-                            </div>
-                            <a href="https://github.com/Azabell1993/ImSQL" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                        <div class="portfolio-card compact animate-card">
-                            <div class="card-image">
-                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&h=200&fit=crop&crop=center" alt="Transformer" />
-                            </div>
-                            <h4>Transformer_</h4>
-                            <p>딥러닝 기반 자연어 처리 모델 실습 및 Transformer 구조 구현 프로젝트</p>
-                            <div class="tech-tags">
-                                <span>Python</span>
-                                <span>Deep Learning</span>
-                                <span>NLP</span>
-                            </div>
-                            <a href="https://github.com/Azabell1993/Transformer_" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                        <div class="portfolio-card compact animate-card" style="border:2px solid #2563eb;box-shadow:0 4px 24px rgba(37,99,235,0.13);">
-                            <div class="card-image">
-                                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=300&h=200&fit=crop&crop=center" alt="ML Engine" />
-                            </div>
-                            <h4 style="color:#2563eb;font-weight:800;">ML Engine <span style="font-size:0.8em;color:#fff;background:#2563eb;padding:2px 8px;border-radius:8px;margin-left:6px;vertical-align:middle;">메인 플젝</span></h4>
-                            <p>딥러닝/머신러닝 모델 관리 및 배포 자동화 엔진</p>
-                            <div class="tech-tags">
-                                <span>C++</span>
-                                <span>LibTorch</span>
-                                <span>DeepSeek gguf</span>
-                            </div>
-                            <a href="https://github.com/Azabell1993/ml-engine" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                        
-                        <div class="portfolio-card compact animate-card">
-                            <div class="card-image">
-                                <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=300&h=200&fit=crop&crop=center" alt="Memory Management" />
-                            </div>
-                            <h4>SmartPtr API</h4>
-                            <p>C 기반 스마트 포인터 API 서버</p>
-                            <div class="tech-tags">
-                                <span>C</span>
-                                <span>API</span>
-                                <span>Memory</span>
-                            </div>
-                            <a href="https://github.com/Azabell1993/c_smartpointer" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                        
-                        <div class="portfolio-card compact animate-card">
-                            <div class="card-image">
-                                <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=300&h=200&fit=crop&crop=center" alt="Operating System" />
-                            </div>
-                            <h4>QT_Kernel_OS</h4>
-                            <p>QT Creator로 만든 커널 OS 샘플</p>
-                            <div class="tech-tags">
-                                <span>C++</span>
-                                <span>QT</span>
-                                <span>OS</span>
-                            </div>
-                            <a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    </div><!-- /.container -->
+  </main>
 
-                <!-- GitHub 레포 섹션 -->
-                <div class="home-section">
-                    <div class="section-header">
-                        <h3><i class="fab fa-github"></i> GitHub 레포지토리 (5개)</h3>
-                        <a href="#" class="view-more" data-tab="github">더보기</a>
-                    </div>
-                    <div class="github-preview" id="homeGithubContainer">
-                        <div class="loading">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            <p>GitHub 레포지토리를 불러오는 중...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 갤러리 섹션 -->
-                <div class="home-section">
-                    <div class="section-header">
-                        <h3><i class="fas fa-images"></i> 아트워크 갤러리 (5개)</h3>
-                        <a href="#" class="view-more" data-tab="gallery">더보기</a>
-                    </div>
-                    <div class="gallery-preview" id="homeGalleryContainer">
-                        <div class="loading">
-                            <i class="fas fa-spinner fa-spin"></i>
-                            <p>갤러리를 불러오는 중...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 검색 탭 -->
-            <div class="tab-content" id="search">
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="GitHub 레포지토리 검색..." id="githubSearch">
-                        <button id="searchGithub">검색</button>
-                    </div>
-                    <div class="search-results" id="searchResults">
-                        <p>GitHub에서 검색할 키워드를 입력하세요.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 포트폴리오 탭 -->
-            <div class="tab-content" id="portfolio">
-                <div class="content-header">
-                    <h2>개발 포트폴리오</h2>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-card animate-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=250&fit=crop&crop=center" alt="Database SQL" />
-                        </div>
-                        <h3>ImSQL</h3>
-                        <p>SQL 자동화 및 라이선스 통합 엔진</p>
-                        <div class="tech-tags">
-                            <span>C++</span>
-                            <span>ECDSA</span>
-                            <span>AES-256</span>
-                        </div>
-                        <a href="https://github.com/Azabell1993/ImSQL" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                    <div class="portfolio-card animate-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=250&fit=crop&crop=center" alt="Transformer" />
-                        </div>
-                        <h3>Transformer_</h3>
-                        <p>딥러닝 기반 자연어 처리 모델 실습 및 Transformer 구조 구현 프로젝트</p>
-                        <div class="tech-tags">
-                            <span>Python</span>
-                            <span>Deep Learning</span>
-                            <span>NLP</span>
-                        </div>
-                        <a href="https://github.com/Azabell1993/Transformer_" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                    <div class="portfolio-card animate-card" style="border:2px solid #2563eb;box-shadow:0 4px 24px rgba(37,99,235,0.13);">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&h=250&fit=crop&crop=center" alt="ML Engine" />
-                        </div>
-                        <h3 style="color:#2563eb;font-weight:800;">ML Engine <span style="font-size:0.8em;color:#fff;background:#2563eb;padding:2px 8px;border-radius:8px;margin-left:6px;vertical-align:middle;">메인 플젝</span></h3>
-                        <p>딥러닝/머신러닝 모델 관리 및 배포 자동화 엔진</p>
-                        <div class="tech-tags">
-                            <span>C++</span>
-                            <span>LibTorch</span>
-                            <span>DeepSeek gguf</span>
-                        </div>
-                        <a href="https://github.com/Azabell1993/ml-engine" target="_blank" style="display:inline-block;margin-top:8px;color:#2563eb;font-weight:700;text-decoration:none;">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                    <div class="portfolio-card animate-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=250&fit=crop&crop=center" alt="Memory Management" />
-                        </div>
-                        <h3>SmartPtr API</h3>
-                        <p>C 기반 스마트 포인터 API 서버</p>
-                        <div class="tech-tags">
-                            <span>C</span>
-                            <span>API</span>
-                            <span>Memory</span>
-                        </div>
-                        <a href="https://github.com/Azabell1993/c_smartpointer" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                    
-                    <div class="portfolio-card animate-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=250&fit=crop&crop=center" alt="Operating System" />
-                        </div>
-                        <h3>QT_Kernel_OS</h3>
-                        <p>QT Creator로 만든 커널 OS 샘플</p>
-                        <div class="tech-tags">
-                            <span>C++</span>
-                            <span>QT</span>
-                            <span>OS</span>
-                        </div>
-                        <a href="https://github.com/Azabell1993/QT_Kernel_OS" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GitHub 레포 탭 -->
-            <div class="tab-content" id="github">
-                <div class="content-header">
-                    <div class="header-with-count">
-                        <div>
-                            <h2>GitHub 레포지토리</h2>
-                            <p>Azabell1993의 모든 공개 레포지토리</p>
-                        </div>
-                        <div class="repo-count-badge" id="repoCountBadge">
-                            <span id="totalRepoCount">-</span>개
-                        </div>
-                    </div>
-                </div>
-                <div class="github-grid" id="githubRepos">
-                    <div class="loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>GitHub 레포지토리를 불러오는 중...</p>
-                    </div>
-                </div>
-                
-                <!-- 페이징 -->
-                <div class="pagination" id="pagination" style="display: none;">
-                    <button class="pagination-btn" id="prevBtn" disabled>
-                        <i class="fas fa-chevron-left"></i>
-                        이전
-                    </button>
-                    <div class="page-info">
-                        <span id="currentPage">1</span> / <span id="totalPages">1</span>
-                    </div>
-                    <button class="pagination-btn" id="nextBtn">
-                        다음
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 갤러리 탭 -->
-            <div class="tab-content" id="gallery">
-                <div class="content-header">
-                    <h2>아트워크 갤러리</h2>
-                    <p>드로잉과 일러스트 작품들</p>
-                </div>
-                <div class="gallery-categories">
-                    <button class="category-btn active" data-category="all">전체</button>                    
-                    <button class="category-btn" data-category="anatomy">해부학</button>
-                    <button class="category-btn" data-category="comic">코믹</button>
-                    <button class="category-btn" data-category="person">인물화</button>
-                    <button class="category-btn" data-category="cad">CAD</button>
-                </div>
-                <div class="gallery-grid" id="galleryContainer">
-                    <!-- JS에서 자동으로 전체 이미지를 표시합니다 -->
-                </div>
-                <script>
-                window.addEventListener('DOMContentLoaded', function() {
-                    // "전체" 버튼 active 처리만 남김 (이미지 로드는 script.js에서 자동)
-                    const allBtn = document.querySelector('.category-btn[data-category="all"]');
-                    if (allBtn) {
-                        allBtn.classList.add('active');
-                    }
-                });
-                </script>
-            </div>
-        </div>
+  <!-- ============================================================
+       Site footer (shared across all pages)
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Jiwoo</span>
+      <nav aria-label="Footer navigation">
+        <ul class="link-row">
+          <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="mailto:jeewoo19930315@gmail.com">Email</a></li>
+        </ul>
+      </nav>
     </div>
+  </footer>
 
-    <script>
-        // 고도화된 파티클 시스템
-        function createAdvancedParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 60;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // 랜덤 크기
-                const size = Math.random() * 6 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                // 랜덤 위치
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
-                
-                // 다양한 색상 그라데이션
-                const gradients = [
-                    'linear-gradient(45deg, rgba(37, 99, 235, 0.8), rgba(59, 130, 246, 0.4))',
-                    'linear-gradient(45deg, rgba(139, 92, 246, 0.8), rgba(168, 85, 247, 0.4))',
-                    'linear-gradient(45deg, rgba(6, 214, 160, 0.8), rgba(20, 184, 166, 0.4))',
-                    'linear-gradient(45deg, rgba(245, 158, 11, 0.8), rgba(251, 191, 36, 0.4))'
-                ];
-                particle.style.background = gradients[Math.floor(Math.random() * gradients.length)];
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // 네트워크 연결 효과
-        function createNetworkEffect() {
-            const networkContainer = document.getElementById('networkLines');
-            const lineCount = 8;
-            
-            for (let i = 0; i < lineCount; i++) {
-                const line = document.createElement('div');
-                line.className = 'network-line';
-                
-                // 랜덤 위치와 크기
-                line.style.top = Math.random() * 100 + '%';
-                line.style.left = Math.random() * 100 + '%';
-                line.style.width = (Math.random() * 200 + 100) + 'px';
-                line.style.animationDelay = Math.random() * 4 + 's';
-                line.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                line.style.transform = `rotate(${Math.random() * 360}deg)`;
-                
-                networkContainer.appendChild(line);
-            }
-        }
-
-        // 타이핑 효과
-        function initTypingEffect() {
-            const textElement = document.querySelector('.typing-text');
-            const text = 'Cross-Platform Developer';
-            textElement.textContent = '';
-            
-            setTimeout(() => {
-                let i = 0;
-                const typeInterval = setInterval(() => {
-                    textElement.textContent += text.charAt(i);
-                    i++;
-                    if (i > text.length) {
-                        clearInterval(typeInterval);
-                        // 커서 깜빡임 제거
-                        setTimeout(() => {
-                            textElement.style.borderRight = 'none';
-                        }, 2000);
-                    }
-                }, 100);
-            }, 1000);
-        }
-
-        // 마우스 따라다니는 효과
-        function initMouseEffect() {
-            let mouseX = 0, mouseY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                
-                // 파티클들이 마우스를 향해 약간 이동
-                const particles = document.querySelectorAll('.particle');
-                particles.forEach((particle, index) => {
-                    const rect = particle.getBoundingClientRect();
-                    const dx = mouseX - (rect.left + rect.width / 2);
-                    const dy = mouseY - (rect.top + rect.height / 2);
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 200) {
-                        const force = (200 - distance) / 200;
-                        particle.style.transform = `translate(${dx * force * 0.1}px, ${dy * force * 0.1}px)`;
-                    }
-                });
-            });
-        }
-
-        // 개선된 진입 함수
-        function enterPortfolio() {
-            const splashScreen = document.getElementById('splashScreen');
-            const mainContainer = document.getElementById('mainContainer');
-            const enterBtn = document.querySelector('.enter-btn');
-            
-            // 버튼 비활성화
-            enterBtn.style.pointerEvents = 'none';
-            enterBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> LOADING...';
-            
-            // 페이드 아웃 효과
-            splashScreen.classList.add('fade-out');
-            
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-                mainContainer.style.display = 'flex';
-                mainContainer.style.animation = 'fadeInUp 1s ease-out';
-                
-                // 메인 스크립트 초기화
-                if (typeof initializePortfolio === 'function') {
-                    initializePortfolio();
-                }
-            }, 1200);
-        }
-
-        // 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            createAdvancedParticles();
-            createNetworkEffect();
-            initTypingEffect();
-            initMouseEffect();
-            
-            // 진입 버튼 이벤트
-            document.querySelector('.enter-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                enterPortfolio();
-            });
-            
-            // 기술 스택 호버 효과
-            document.querySelectorAll('.tech-item').forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.animationPlayState = 'paused';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.animationPlayState = 'running';
-                });
-            });
-        });
-    </script>
-
-    <script src="script.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>

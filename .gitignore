@@ -1,1 +1,17 @@
 .DS_Store
+.git
+.gitignore
+.idea
+.vscode
+node_modules
+dist
+build
+coverage
+*.log
+.github
+.env
+.env.local
+.env.development
+.env.test
+
+        

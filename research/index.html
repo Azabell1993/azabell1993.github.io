@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research overview — Jiwoo is a full-time researcher at Kookmin University SCRC working on edge AI, lightweight language models, and special communication networks.">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Research — Jiwoo">
+  <meta property="og:description" content="Research on edge AI, SLM/LLM deployment, special communication networks, and physical AI applications.">
+  <meta property="og:url"         content="https://azabell1993.github.io/research/">
+  <title>Research &mdash; Jiwoo</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-name">Jiwoo</a>
+      <button class="nav-toggle"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/cv/">CV</a>
+        <a href="/research/">Research</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/">Notes</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+
+      <div class="page-intro">
+        <h1>Research</h1>
+        <p>I am a full-time researcher at the <a href="https://scrc.kookmin.ac.kr/scrc/index.do" rel="noopener noreferrer">Software Convergence Research Center (SCRC)</a>, Kookmin University, under the supervision of Professor Park Soo-hyun. My research addresses the challenge of deploying intelligent AI systems in resource-constrained and connectivity-challenged environments &mdash; particularly in special communication networks such as underwater acoustic and polar satellite relay systems.</p>
+      </div>
+
+
+      <!-- ── Research Areas ──────────────────────────────────── -->
+      <section aria-labelledby="areas-heading">
+        <h2 class="section-heading" id="areas-heading">Research Areas</h2>
+
+        <!-- Area 1 -->
+        <div class="research-area">
+          <h3>Special Communication Networks</h3>
+          <p>Conventional communication infrastructure assumes stable, high-bandwidth links. Many critical environments &mdash; underwater acoustic channels, polar satellite relay networks, and deep-field sensor arrays &mdash; operate under severe latency, bandwidth, and reliability constraints. I study the system-level requirements for embedding AI capabilities into these environments.</p>
+          <p>Current work focuses on characterizing the inference and data-handling demands of AI tasks under channel constraints, with the aim of defining deployable model and runtime specifications for such networks.</p>
+          <ul class="tag-list" aria-label="Related topics">
+            <li><span class="tag">underwater-networks</span></li>
+            <li><span class="tag">polar-networks</span></li>
+            <li><span class="tag">delay-tolerant</span></li>
+            <li><span class="tag">edge-computing</span></li>
+            <li><span class="tag">communication-systems</span></li>
+          </ul>
+        </div>
+
+        <!-- Area 2 -->
+        <div class="research-area">
+          <h3>Edge AI &amp; Lightweight Language Models</h3>
+          <p>Large language models are computationally prohibitive for deployment on edge devices. I investigate strategies for adapting small language models (SLMs) and quantized LLMs to operate within the memory, power, and compute budgets of resource-constrained hardware &mdash; from embedded processors to communication relay nodes.</p>
+          <p>This includes evaluating quantization techniques (GGUF, GPTQ, AWQ), studying the quality-size trade-off in distilled models, and assessing practical feasibility of on-device inference in communication-oriented use cases.</p>
+          <ul class="tag-list" aria-label="Related topics">
+            <li><span class="tag">SLM</span></li>
+            <li><span class="tag">LLM</span></li>
+            <li><span class="tag">edge-AI</span></li>
+            <li><span class="tag">quantization</span></li>
+            <li><span class="tag">on-device-inference</span></li>
+          </ul>
+        </div>
+
+        <!-- Area 3 -->
+        <div class="research-area">
+          <h3>System-Level Implementation &amp; Optimization</h3>
+          <p>Research prototypes must be grounded in real implementations. I build and maintain inference runtimes and evaluation tools that make performance constraints concrete: latency measurements, memory footprint, and cross-platform reproducibility.</p>
+          <p>Active projects include <a href="/projects/"><em>llmrc</em></a> (a Rust-based local LLM runtime with C++ FFI and GGUF model loading) and <a href="/projects/"><em>ml-engine</em></a> (a C++/LibTorch inference pipeline with a lightweight REST interface).</p>
+          <ul class="tag-list" aria-label="Related topics">
+            <li><span class="tag">Rust</span></li>
+            <li><span class="tag">C++</span></li>
+            <li><span class="tag">LibTorch</span></li>
+            <li><span class="tag">GGUF</span></li>
+            <li><span class="tag">llama.cpp</span></li>
+            <li><span class="tag">FFI</span></li>
+          </ul>
+        </div>
+
+        <!-- Area 4 -->
+        <div class="research-area">
+          <h3>Physical AI Applications</h3>
+          <p>Physical AI refers to the integration of AI inference into physical systems and infrastructure where real-time reliability and resource efficiency are hard constraints. I am interested in defining application models and performance requirements for AI in communication infrastructure: autonomous relay management, signal classification, and anomaly detection in hardware-constrained network nodes.</p>
+          <ul class="tag-list" aria-label="Related topics">
+            <li><span class="tag">physical-AI</span></li>
+            <li><span class="tag">real-time-systems</span></li>
+            <li><span class="tag">IoT</span></li>
+            <li><span class="tag">signal-processing</span></li>
+            <li><span class="tag">autonomous-systems</span></li>
+          </ul>
+        </div>
+
+      </section>
+
+
+      <!-- ── Publications ──────────────────────────────────────── -->
+      <section aria-labelledby="pubs-heading">
+        <h2 class="section-heading" id="pubs-heading">Selected Publications</h2>
+
+        <!-- No publications finalized. Research is in progress. -->
+        <div class="cv-pub">
+          <p class="cv-pub-title">
+            Research in progress &mdash; no publications finalized at this time.
+          </p>
+          <p class="cv-pub-meta">M.S. research commenced March 2026 at Kookmin University SCRC. Ongoing work covers edge AI deployment for special communication networks and system-level SLM/LLM optimization. Publications are in preparation.</p>
+        </div>
+
+        <p class="text-sm text-muted mt-4">
+          Full academic record on <a href="/cv/">CV</a>.
+        </p>
+      </section>
+
+
+      <!-- ── Collaboration ──────────────────────────────────────── -->
+      <section aria-labelledby="collab-heading">
+        <h2 class="section-heading" id="collab-heading">Collaboration</h2>
+        <p>
+          I am open to research collaborations with groups working on special communication systems, edge computing, or AI for resource-constrained environments. I am also interested in connecting with researchers at the intersection of communication networks and machine learning systems. Please reach out via <a href="/contact/">the contact page</a>.
+        </p>
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Jiwoo</span>
+      <nav aria-label="Footer navigation">
+        <ul class="link-row">
+          <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="mailto:jeewoo19930315@gmail.com">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
