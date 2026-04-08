@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jiwoo (Park Jiwoo) — Edge AI Researcher & Systems Engineer. Portfolio showcasing research, projects, and experience.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Portfolio — Jiwoo">
+  <meta property="og:description" content="Edge AI Researcher & Systems Engineer at Kookmin University SCRC. Rust · C++ · LLM · Edge Computing.">
+  <meta property="og:url"         content="https://azabell1993.github.io/intro/">
+  <title>Portfolio — Jiwoo</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/main.css?v=86adeb2">
+  <style>
+    /* ============================================================
+       Portfolio-specific styles
+       ============================================================ */
+
+    /* ── CSS variables override for portfolio accent ── */
+    .pf-page {
+      --pf-accent:      #1d4ed8;
+      --pf-accent-2:    #7c3aed;
+      --pf-accent-g:    linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+      --pf-card-radius: 10px;
+    }
+
+    /* ── Hero ── */
+    .pf-hero {
+      position: relative;
+      padding: 5rem 0 4rem;
+      overflow: hidden;
+    }
+
+    .pf-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #eff6ff 0%, #f5f3ff 50%, #fafafa 100%);
+      z-index: 0;
+    }
+
+    .pf-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pf-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .pf-hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 999px;
+      padding: 0.3em 0.9em;
+      margin-bottom: 1rem;
+    }
+
+    .pf-hero-name {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      background: var(--pf-accent-g);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-hero-title {
+      font-size: 1.15rem;
+      color: var(--c-text-muted);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .pf-hero-bio {
+      font-size: 1rem;
+      color: var(--c-text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .pf-hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .pf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      padding: 0.55em 1.15em;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .pf-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .pf-btn-primary {
+      background: var(--pf-accent-g);
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+    }
+
+    .pf-btn-outline {
+      border: 1.5px solid var(--c-border-dark);
+      color: var(--c-text-muted) !important;
+      -webkit-text-fill-color: unset;
+      background: var(--c-bg);
+    }
+
+    .pf-btn-outline:hover {
+      border-color: var(--pf-accent);
+      color: var(--pf-accent) !important;
+    }
+
+    /* Avatar monogram */
+    .pf-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--pf-accent-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.04em;
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(29,78,216,.25);
+    }
+
+    /* ── Section wrapper ── */
+    .pf-section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .pf-section-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pf-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-section-heading {
+      font-size: 1.625rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Skill grid ── */
+    .pf-skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .pf-skill-card {
+      background: var(--c-bg-subtle);
+      border: 1px solid var(--c-border);
+      border-radius: var(--pf-card-radius);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .pf-skill-card:hover {
+      border-color: var(--c-border-dark);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .pf-skill-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+    }
+
+    .pf-skill-card-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-skill-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .pf-skill-card-tags .tag {
+      font-size: 0.7rem;
+    }
+
+    /* ── Timeline (experience) ── */
+    .pf-timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .pf-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #1d4ed8, #7c3aed, #e2e8f0);
+      border-radius: 2px;
+    }
+
+    .pf-tl-item {
+      position: relative;
+      padding: 0 0 2.5rem 1.5rem;
+    }
+
+    .pf-tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .pf-tl-item::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0.35rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pf-accent);
+      border: 2px solid var(--c-bg);
+      box-shadow: 0 0 0 2px var(--pf-accent);
+    }
+
+    .pf-tl-item.pf-tl-current::before {
+      background: #7c3aed;
+      box-shadow: 0 0 0 2px #7c3aed, 0 0 0 4px #f5f3ff;
+    }
+
+    .pf-tl-date {
+      font-size: 0.75rem;
+      font-family: var(--f-mono);
+      color: var(--c-text-faint);
+      margin-bottom: 0.25rem;
+    }
+
+    .pf-tl-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .pf-tl-org {
+      font-size: 0.875rem;
+      color: var(--c-text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .pf-tl-body {
+      font-size: 0.875rem;
+      color: var(--c-text-muted);
+      line-height: 1.65;
+    }
+
+    .pf-tl-body ul {
+      padding-left: 1.2rem;
+      margin-top: 0.35rem;
+    }
+
+    .pf-tl-body li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── Project cards (3-col) ── */
+    .pf-proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .pf-proj-card {
+      border: 1px solid var(--c-border);
+      border-radius: var(--pf-card-radius);
+      padding: 1.5rem;
+      background: var(--c-bg);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+
+    .pf-proj-card:hover {
+      border-color: var(--pf-accent);
+      box-shadow: 0 4px 24px rgba(29,78,216,.1);
+      transform: translateY(-3px);
+    }
+
+    .pf-proj-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .pf-proj-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pf-proj-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: var(--f-mono);
+      padding: 0.2em 0.6em;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    .pf-proj-pill.active {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .pf-proj-pill.research {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .pf-proj-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--c-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .pf-proj-name:hover {
+      color: var(--pf-accent);
+    }
+
+    .pf-proj-desc {
+      font-size: 0.875rem;
+      color: var(--c-text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .pf-proj-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--c-border);
+      margin-top: auto;
+    }
+
+    .pf-proj-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pf-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    .pf-proj-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Research areas ── */
+    .pf-research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .pf-research-card {
+      border: 1px solid var(--c-border);
+      border-radius: var(--pf-card-radius);
+      padding: 1.5rem;
+      background: var(--c-bg-subtle);
+      transition: border-color 0.15s;
+    }
+
+    .pf-research-card:hover {
+      border-color: var(--pf-accent-2);
+    }
+
+    .pf-research-num {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--pf-accent-g);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-research-title {
+      font-size: 0.975rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .pf-research-desc {
+      font-size: 0.875rem;
+      color: var(--c-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Education ── */
+    .pf-edu-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .pf-edu-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--c-border);
+      align-items: start;
+    }
+
+    .pf-edu-item:first-child {
+      border-top: 1px solid var(--c-border);
+    }
+
+    .pf-edu-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--pf-accent-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .pf-edu-degree {
+      font-size: 0.975rem;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .pf-edu-school {
+      font-size: 0.875rem;
+      color: var(--c-text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .pf-edu-period {
+      font-size: 0.75rem;
+      font-family: var(--f-mono);
+      color: var(--c-text-faint);
+    }
+
+    /* ── Contact strip ── */
+    .pf-contact {
+      background: linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%);
+      border-radius: var(--pf-card-radius);
+      padding: 3rem 2.5rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .pf-contact h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .pf-contact p {
+      color: rgba(255,255,255,.75);
+      max-width: 480px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .pf-contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .pf-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      padding: 0.6em 1.3em;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .pf-contact-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .pf-contact-btn-white {
+      background: #fff;
+      color: #1e3a8a !important;
+      -webkit-text-fill-color: #1e3a8a;
+    }
+
+    .pf-contact-btn-ghost {
+      border: 1.5px solid rgba(255,255,255,.45);
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+    }
+
+    /* ── Stats row ── */
+    .pf-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .pf-stat {
+      text-align: center;
+      padding: 1.25rem;
+      background: var(--c-bg-subtle);
+      border: 1px solid var(--c-border);
+      border-radius: var(--pf-card-radius);
+    }
+
+    .pf-stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--pf-accent-g);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .pf-stat-label {
+      font-size: 0.8rem;
+      color: var(--c-text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .pf-hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .pf-avatar {
+        display: none;
+      }
+      .pf-skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pf-proj-grid {
+        grid-template-columns: 1fr;
+      }
+      .pf-research-grid {
+        grid-template-columns: 1fr;
+      }
+      .pf-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pf-skill-grid {
+        grid-template-columns: 1fr;
+      }
+      .pf-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pf-contact {
+        padding: 2rem 1.25rem;
+      }
+    }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (r) { r.unregister(); });
+      });
+      if ('caches' in window) {
+        caches.keys().then(function (keys) {
+          keys.forEach(function (k) { caches.delete(k); });
+        });
+      }
+    }
+  </script>
+</head>
+<body class="pf-page">
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Header (no portfolio link in nav — as requested) ── -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-name">Jiwoo</a>
+      <button class="nav-toggle"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/cv/">CV</a>
+        <a href="/research/">Research</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/">Notes</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════════════════════
+         HERO
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-hero" aria-labelledby="pf-hero-name">
+      <div class="container">
+        <div class="pf-hero-inner">
+          <div>
+
+            <h1 class="pf-hero-name" id="pf-hero-name">박지우 Jiwoo</h1>
+            <p class="pf-hero-title">Edge AI Researcher &amp; Systems Engineer</p>
+            <p class="pf-hero-bio">
+              국민대학교 소프트웨어융합대학원 응용인공지능학과 소속 전임 연구원. Rust/C++ 기반 온디바이스 추론 런타임 제작과 특수통신망에서의 경량 언어모델 배포 연구에 집중하고 있습니다.
+            </p>
+            <ul class="pf-hero-links">
+              <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer" class="pf-btn pf-btn-primary">
+                ↗ GitHub
+              </a></li>
+              <li><a href="/cv/" class="pf-btn pf-btn-outline">CV 보기</a></li>
+              <li><a href="/research/" class="pf-btn pf-btn-outline">Research</a></li>
+              <li><a href="mailto:jeewoo19930315@gmail.com" class="pf-btn pf-btn-outline">Email</a></li>
+            </ul>
+          </div>
+          <div class="pf-avatar" aria-hidden="true">JW</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         STATS
+         ══════════════════════════════════════════════════════════ -->
+    <div class="container" style="padding-top: 2.5rem;">
+      <div class="pf-stats" aria-label="Quick statistics">
+        <div class="pf-stat">
+          <div class="pf-stat-value">10+</div>
+          <div class="pf-stat-label">Years in Industry</div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-value">0</div>
+          <div class="pf-stat-label">Active Projects</div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-value">6</div>
+          <div class="pf-stat-label">Core Languages</div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-value">2</div>
+          <div class="pf-stat-label">Research Areas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SKILLS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="skills-heading">
+      <div class="container">
+        <p class="pf-section-label">Technical Skills</p>
+        <h2 class="pf-section-heading" id="skills-heading">무엇을 할 수 있나요</h2>
+
+        <div class="pf-skill-grid">
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">⚙️</div>
+            <div class="pf-skill-card-title">Systems Programming</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">Rust</span></li>
+              <li><span class="tag">C++</span></li>
+              <li><span class="tag">C</span></li>
+              <li><span class="tag">FFI</span></li>
+              <li><span class="tag">CMake</span></li>
+            </ul>
+          </div>
+
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">🧠</div>
+            <div class="pf-skill-card-title">AI / ML Inference</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">llama.cpp</span></li>
+              <li><span class="tag">GGUF</span></li>
+              <li><span class="tag">LibTorch</span></li>
+              <li><span class="tag">PyTorch</span></li>
+              <li><span class="tag">HuggingFace</span></li>
+            </ul>
+          </div>
+
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">🔬</div>
+            <div class="pf-skill-card-title">Edge AI &amp; Deployment</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">Quantization</span></li>
+              <li><span class="tag">On-device Inference</span></li>
+              <li><span class="tag">Memory Optimization</span></li>
+              <li><span class="tag">Embedded Linux</span></li>
+            </ul>
+          </div>
+
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">🐧</div>
+            <div class="pf-skill-card-title">Linux &amp; DevOps</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">Linux BSP</span></li>
+              <li><span class="tag">Docker</span></li>
+              <li><span class="tag">GitHub Actions</span></li>
+              <li><span class="tag">Shell/Bash</span></li>
+              <li><span class="tag">CI/CD</span></li>
+            </ul>
+          </div>
+
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">👁️</div>
+            <div class="pf-skill-card-title">Computer Vision</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">OpenCV</span></li>
+              <li><span class="tag">Raspberry Pi</span></li>
+              <li><span class="tag">License Plate OCR</span></li>
+              <li><span class="tag">Water-level Detection</span></li>
+            </ul>
+          </div>
+
+          <div class="pf-skill-card">
+            <div class="pf-skill-card-icon">🌐</div>
+            <div class="pf-skill-card-title">Web &amp; Backend</div>
+            <ul class="pf-skill-card-tags tag-list">
+              <li><span class="tag">REST API</span></li>
+              <li><span class="tag">HTTP</span></li>
+              <li><span class="tag">Python</span></li>
+              <li><span class="tag">SQL</span></li>
+              <li><span class="tag">Spring</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         PROJECTS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="pf-section-label">Open Source</p>
+        <h2 class="pf-section-heading" id="projects-heading">주요 프로젝트</h2>
+
+        <div class="pf-proj-grid">
+
+          <!-- llmrc -->
+          <article class="pf-proj-card">
+            <div class="pf-proj-header">
+              <div class="pf-proj-icon" aria-hidden="true">🦀</div>
+              <span class="pf-proj-pill active">active</span>
+            </div>
+            <a href="https://github.com/Azabell1993/llmrc"
+               rel="noopener noreferrer"
+               class="pf-proj-name">llmrc</a>
+            <p class="pf-proj-desc">
+              Rust로 작성된 로컬 LLM 런타임. GGUF 포맷 모델을 로드하고 C++ FFI로 추론 라이브러리와
+              브리징하며 HTTP 추론 인터페이스를 제공. macOS·Linux 재현 가능한 로컬 실행에 초점.
+            </p>
+            <div class="pf-proj-footer">
+              <ul class="tag-list pf-skill-card-tags">
+                <li><span class="tag">Rust</span></li>
+                <li><span class="tag">C++ FFI</span></li>
+                <li><span class="tag">GGUF</span></li>
+              </ul>
+              <a href="https://github.com/Azabell1993/llmrc"
+                 rel="noopener noreferrer"
+                 class="pf-proj-link">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- ml-engine -->
+          <article class="pf-proj-card">
+            <div class="pf-proj-header">
+              <div class="pf-proj-icon" aria-hidden="true">🔩</div>
+              <span class="pf-proj-pill research">research</span>
+            </div>
+            <a href="https://github.com/Azabell1993/ml-engine"
+               rel="noopener noreferrer"
+               class="pf-proj-name">ml-engine</a>
+            <p class="pf-proj-desc">
+              LibTorch 기반 C++ 추론 환경. 모델 로딩 파이프라인, 경량 REST API 서빙,
+              GGUF/llama.cpp 백엔드 실험적 통합을 구현. Edge AI 연구의 실용적 기반.
+            </p>
+            <div class="pf-proj-footer">
+              <ul class="tag-list pf-skill-card-tags">
+                <li><span class="tag">C++</span></li>
+                <li><span class="tag">LibTorch</span></li>
+                <li><span class="tag">REST</span></li>
+              </ul>
+              <a href="https://github.com/Azabell1993/ml-engine"
+                 rel="noopener noreferrer"
+                 class="pf-proj-link">GitHub →</a>
+            </div>
+          </article>
+
+          <!-- QT_Kernel_OS -->
+          <article class="pf-proj-card">
+            <div class="pf-proj-header">
+              <div class="pf-proj-icon" aria-hidden="true">💻</div>
+              <span class="pf-proj-pill active">active</span>
+            </div>
+            <a href="https://github.com/Azabell1993/QT_Kernel_OS"
+               rel="noopener noreferrer"
+               class="pf-proj-name">QT_Kernel_OS</a>
+            <p class="pf-proj-desc">
+              Qt/C++ CLI 기반 OS 내부구조 학습 프로젝트. 프로세스 스케줄링·메모리 관리·
+              파일시스템 구조를 구현하고 시각화. 커널 아키텍처를 체계적으로 실험.
+            </p>
+            <div class="pf-proj-footer">
+              <ul class="tag-list pf-skill-card-tags">
+                <li><span class="tag">C++</span></li>
+                <li><span class="tag">Qt</span></li>
+                <li><span class="tag">Systems</span></li>
+              </ul>
+              <a href="https://github.com/Azabell1993/QT_Kernel_OS"
+                 rel="noopener noreferrer"
+                 class="pf-proj-link">GitHub →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         RESEARCH
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="research-heading">
+      <div class="container">
+        <p class="pf-section-label">Research</p>
+        <h2 class="pf-section-heading" id="research-heading">연구 분야</h2>
+
+        <div class="pf-research-grid">
+
+          <div class="pf-research-card">
+            <div class="pf-research-num">01</div>
+            <div class="pf-research-title">특수통신망 (Special Communication Networks)</div>
+            <p class="pf-research-desc">
+              수중 음향통신·극지 위성중계망 등 극단적 대역폭·지연 제약 환경에서의 AI 임베딩 가능성 연구.
+              채널 제약 조건 하에서 추론 요구사항을 정의하고 배포 가능한 모델 사양을 도출.
+            </p>
+          </div>
+
+          <div class="pf-research-card">
+            <div class="pf-research-num">02</div>
+            <div class="pf-research-title">Edge AI &amp; 경량 언어모델 (SLM/LLM)</div>
+            <p class="pf-research-desc">
+              자원 제약 하드웨어에서 SLM·양자화 LLM을 동작시키는 전략 연구.
+              GGUF·GPTQ·AWQ 양자화 기법 평가, 품질-크기 트레이드오프 분석, 온디바이스 추론 실현 가능성 검증.
+            </p>
+          </div>
+
+          <div class="pf-research-card">
+            <div class="pf-research-num">03</div>
+            <div class="pf-research-title">시스템 수준 최적화</div>
+            <p class="pf-research-desc">
+              추론 런타임과 평가 도구 구현을 통해 성능 제약을 구체화. 지연시간·메모리 풋프린트·
+              크로스플랫폼 재현성에 초점을 맞춘 오픈소스 프로토타입 유지보수.
+            </p>
+          </div>
+
+          <div class="pf-research-card">
+            <div class="pf-research-num">04</div>
+            <div class="pf-research-title">Physical AI 응용</div>
+            <p class="pf-research-desc">
+              실시간 신뢰성과 자원 효율이 하드 제약인 물리 시스템에서의 AI 추론 통합.
+              자율 릴레이 관리·신호 분류·이상 탐지를 포함한 통신 인프라 AI 애플리케이션 모델 정의.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         EXPERIENCE
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="exp-heading">
+      <div class="container">
+        <p class="pf-section-label">Career</p>
+        <h2 class="pf-section-heading" id="exp-heading">경력 타임라인</h2>
+
+        <div class="pf-timeline">
+
+          <div class="pf-tl-item pf-tl-current">
+            <div class="pf-tl-date">2026.03 — present</div>
+            <div class="pf-tl-title">Full-Time Researcher</div>
+            <div class="pf-tl-org">Software Convergence Research Center (SCRC), 국민대학교</div>
+            <div class="pf-tl-body">
+              <ul>
+                <li>Edge AI 배포 및 경량 LLM 추론 최적화 연구 (특수통신망 적용)</li>
+                <li>Physical AI 응용 연구</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2025.02 — 2025.04</div>
+            <div class="pf-tl-title">Vision Processing Engineer</div>
+            <div class="pf-tl-org">Stance</div>
+            <div class="pf-tl-body">
+              <ul>
+                <li>컴퓨터 비전 기반 수위 인식 프로그램 개발</li>
+                <li>번호판 인식 모듈 구현 및 KPI 성과지표 작성</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2024.12 — 2025.02</div>
+            <div class="pf-tl-title">Embedded Vision Developer</div>
+            <div class="pf-tl-org">Wiseplus</div>
+            <div class="pf-tl-body">
+              Raspberry Pi 기반 영상처리 개발, 엔진 라우터 아키텍처 구현
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2024.07 — 2024.12</div>
+            <div class="pf-tl-title">Edge Device Training</div>
+            <div class="pf-tl-org">한컴아카데미 · 한화비전 Edge Device 과정</div>
+            <div class="pf-tl-body">
+              Embedded Linux BSP 개발 및 C/C++ 시스템 프로그래밍 교육 이수
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2022.10 — 2024.07</div>
+            <div class="pf-tl-title">Web &amp; Cloud Developer (Team Lead)</div>
+            <div class="pf-tl-org">MT Data</div>
+            <div class="pf-tl-body">
+              <ul>
+                <li>웹 개발 및 클라우드 MSP 운영</li>
+                <li>WBS 기반 프로젝트 관리, 팀 리드 역할 수행</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2017 — 2020</div>
+            <div class="pf-tl-title">Mold Design Engineer</div>
+            <div class="pf-tl-org">Dooyen / Nano Ace</div>
+            <div class="pf-tl-body">
+              자동차 전자부품·반도체 검사장비용 사출금형 설계 및 유지보수
+            </div>
+          </div>
+
+          <div class="pf-tl-item">
+            <div class="pf-tl-date">2014 — 2017</div>
+            <div class="pf-tl-title">Plant Piping Designer</div>
+            <div class="pf-tl-org">MaxSkill</div>
+            <div class="pf-tl-body">
+              플랜트 배관 설계 및 3D 모델링, 배관 레이아웃·아이소메트릭 도면 작성
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         EDUCATION
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="edu-heading">
+      <div class="container">
+        <p class="pf-section-label">Education</p>
+        <h2 class="pf-section-heading" id="edu-heading">학력</h2>
+
+        <div class="pf-edu-grid">
+
+          <div class="pf-edu-item">
+            <div class="pf-edu-dot" aria-hidden="true">🎓</div>
+            <div>
+              <div class="pf-edu-degree">M.S. 응용인공지능 (책임연구원)</div>
+              <div class="pf-edu-school">국민대학교 소프트웨어융합대학원 · 지도교수: 박수현 교수</div>
+              <div class="pf-edu-period">2026.03 — present &middot; <a href="https://scrc.kookmin.ac.kr/scrc/index.do" rel="noopener noreferrer">SCRC Lab</a></div>
+            </div>
+          </div>
+
+          <div class="pf-edu-item">
+            <div class="pf-edu-dot" aria-hidden="true">📘</div>
+            <div>
+              <div class="pf-edu-degree">B.S. 컴퓨터과학</div>
+              <div class="pf-edu-school">한국방송통신대학교 컴퓨터과학과</div>
+              <div class="pf-edu-period">2022.03 — 2026.02 · 재직 중 학업 병행</div>
+            </div>
+          </div>
+
+          <div class="pf-edu-item">
+            <div class="pf-edu-dot" aria-hidden="true">🖥️</div>
+            <div>
+              <div class="pf-edu-degree">멀티미디어과 (Visual Basic 프로그래밍)</div>
+              <div class="pf-edu-school">대경정보산업고등학교</div>
+              <div class="pf-edu-period">2010.02 — 2013.02</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         CONTACT CTA
+         ══════════════════════════════════════════════════════════ -->
+    <section class="pf-section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="pf-contact">
+          <h2 id="contact-heading">함께 연구하고 싶으신가요?</h2>
+          <p>특수통신망·엣지 컴퓨팅·온디바이스 AI 분야 협업 및 교류를 환영합니다.</p>
+          <ul class="pf-contact-links">
+            <li>
+              <a href="mailto:jeewoo19930315@gmail.com"
+                 class="pf-contact-btn pf-contact-btn-white">
+                ✉ 이메일 보내기
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Azabell1993"
+                 rel="noopener noreferrer"
+                 class="pf-contact-btn pf-contact-btn-ghost">
+                GitHub 프로필
+              </a>
+            </li>
+            <li>
+              <a href="/contact/"
+                 class="pf-contact-btn pf-contact-btn-ghost">
+                Contact 페이지
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Jiwoo</span>
+      <nav aria-label="Footer navigation">
+        <ul class="link-row">
+          <li><a href="https://github.com/Azabell1993" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="mailto:jeewoo19930315@gmail.com">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js?v=86adeb2"></script>
+</body>
+</html>
