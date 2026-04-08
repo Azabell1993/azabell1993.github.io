@@ -1,0 +1,8 @@
+{
+  "name": "azabell1993-github-io",
+  "private": true,
+  "scripts": {
+    "cache-bust": "node scripts/cache-bust.js",
+    "predeploy": "node scripts/cache-bust.js"
+  }
+}

@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Jiwoo — Full-Time Researcher, Kookmin University Graduate School of Software Convergence, Department of Applied Artificial Intelligence.">
+  <!-- Cache busting: force browsers to re-fetch this page every visit -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <!-- CUSTOMIZE: update name, description, and URL below -->
   <meta property="og:type"        content="website">
   <meta property="og:title"       content="Jiwoo — Researcher, Kookmin University">
@@ -12,6 +16,24 @@
   <title>Jiwoo — Researcher, Kookmin University</title>
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Immediately unregister any previously installed Service Workers -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+          registration.unregister();
+        });
+      });
+      // Also clear all caches managed by a previous Service Worker
+      if ('caches' in window) {
+        caches.keys().then(function (keys) {
+          keys.forEach(function (key) {
+            caches.delete(key);
+          });
+        });
+      }
+    }
+  </script>
 </head>
 <body>
 
